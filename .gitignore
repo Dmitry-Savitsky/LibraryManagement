@@ -3,6 +3,9 @@
 .idea/
 .vscode/
 
+
+.vs/
+
 # ASP.NET build results
 bin/
 obj/

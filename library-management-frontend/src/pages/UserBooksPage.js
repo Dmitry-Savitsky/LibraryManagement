@@ -4,11 +4,15 @@ import { Context } from "../index";
 import { getUserBooks, returnBook } from "../http/bookHasUserApi";
 
 const calculateReturnDate = (timeBorrowed, checkoutPeriod) => {
-  if (!timeBorrowed || !checkoutPeriod) return ""; const borrowedDate = new Date(timeBorrowed); borrowedDate.setDate(borrowedDate.getDate() + checkoutPeriod); return borrowedDate.toLocaleDateString();
+  if (!timeBorrowed || !checkoutPeriod) return "";
+  const borrowedDate = new Date(timeBorrowed);
+  borrowedDate.setDate(borrowedDate.getDate() + checkoutPeriod);
+  return borrowedDate.toLocaleDateString();
 };
 
 const UserBooksPage = () => {
-  const { user } = useContext(Context); const [userBooks, setUserBooks] = useState([]);
+  const { user } = useContext(Context);
+  const [userBooks, setUserBooks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -36,7 +40,7 @@ const UserBooksPage = () => {
       setErrorMessage("");
       await returnBook(bookId, user.id);
       setSuccessMessage("Книга успешно возвращена!");
-      setUserBooks((prevBooks) => prevBooks.filter((book) => book.bookCharacteristics.id !== bookId));
+      setUserBooks((prevBooks) => prevBooks.filter((book) => book.bookId !== bookId));
     } catch (error) {
       console.error("Error returning book:", error);
       setErrorMessage("Ошибка при возврате книги. Попробуйте позже.");
@@ -70,13 +74,13 @@ const UserBooksPage = () => {
           </thead>
           <tbody>
             {userBooks.map((book, index) => {
-              const { bookCharacteristics, timeBorrowed } = book || {};
+              const { bookId, bookCharacteristics, timeBorrowed } = book || {};
               const checkoutPeriod = bookCharacteristics?.checkoutPeriod;
               const title = bookCharacteristics?.title || "Неизвестное название";
               const genre = bookCharacteristics?.genre || "Неизвестный жанр";
 
               return (
-                <tr key={bookCharacteristics?.id}>
+                <tr key={bookId}>
                   <td>{index + 1}</td>
                   <td>{title}</td>
                   <td>{genre}</td>
@@ -84,7 +88,7 @@ const UserBooksPage = () => {
                   <td>
                     <Button
                       variant="danger"
-                      onClick={() => handleReturnBook(book.bookCharacteristics.id)}
+                      onClick={() => handleReturnBook(bookId)}
                     >
                       Вернуть книгу
                     </Button>

@@ -2,8 +2,8 @@ import React, { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Container, Row, Col, Card, Button, Form, Carousel } from "react-bootstrap";
 import { getAllBookCharacteristics } from "../http/bookCharacteristicsApi";
-import { updateBookCharacteristic, deleteBookCharacteristic } from "../http/bookCharacteristicsApi";   import { BOOK_DETAILS_ROUTE } from "../utils/consts";
-import { Context } from "..";  
+import { updateBookCharacteristic, deleteBookCharacteristic } from "../http/bookCharacteristicsApi"; import { BOOK_DETAILS_ROUTE } from "../utils/consts";
+import { Context } from "..";
 const BookListPage = () => {
   const [books, setBooks] = useState([]);
   const [filteredBooks, setFilteredBooks] = useState([]);
@@ -11,7 +11,7 @@ const BookListPage = () => {
   const [loading, setLoading] = useState(true);
 
   const navigate = useNavigate();
-  const { user } = useContext(Context);  
+  const { user } = useContext(Context);
   useEffect(() => {
     const fetchBooks = async () => {
       try {
@@ -27,7 +27,7 @@ const BookListPage = () => {
     fetchBooks();
   }, []);
 
-     useEffect(() => {
+  useEffect(() => {
     const filtered = books.filter((book) =>
       book.title.toLowerCase().includes(searchQuery.toLowerCase())
     );
@@ -48,14 +48,15 @@ const BookListPage = () => {
   const handleDeleteBook = async (bookId) => {
     try {
       await deleteBookCharacteristic(bookId);
-      setBooks(books.filter((book) => book.id !== bookId));        alert("Книга удалена!");
+      setBooks(books.filter((book) => book.id !== bookId)); alert("Книга удалена!");
     } catch (error) {
       alert("Ошибка при удалении книги!");
     }
   };
 
   const handleUpdateBook = (book) => {
-    navigate(`/update-book/${book.id}`);    };
+    navigate(`/update-book/${book.id}`);
+  };
 
   if (loading) {
     return <div className="text-center mt-5">Loading...</div>;

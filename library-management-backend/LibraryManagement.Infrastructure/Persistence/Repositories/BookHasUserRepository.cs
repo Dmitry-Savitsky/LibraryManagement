@@ -40,6 +40,7 @@ namespace LibraryManagement.Infrastructure.Repositories
                 .Where(bhu => bhu.UserId == userId)
                 .Select(bhu => new
                 {
+                    BookId = bhu.BookId,
                     BookCharacteristics = bhu.Book.BookCharacteristics,
                     TimeBorrowed = bhu.TimeBorrowed
                 })
