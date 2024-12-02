@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { getAllAuthors } from '../http/authorApi';
 import { updateBookCharacteristic } from '../http/bookCharacteristicsApi';
+
 const EditBookForm = ({
   bookId,
   currentIsbn,
@@ -8,6 +10,7 @@ const EditBookForm = ({
   currentDescription,
   currentCheckoutPeriod,
   currentBookCount,
+  currentAuthorId,
   onClose,
 }) => {
   const [formData, setFormData] = useState({
@@ -17,9 +20,12 @@ const EditBookForm = ({
     Description: currentDescription,
     CheckoutPeriod: currentCheckoutPeriod,
     BookCount: currentBookCount,
+    AuthorId: currentAuthorId || '',
     Image: null,
   });
+
   const [error, setError] = useState('');
+  const [authors, setAuthors] = useState();
 
   useEffect(() => {
     setFormData({
@@ -29,9 +35,33 @@ const EditBookForm = ({
       Description: currentDescription,
       CheckoutPeriod: currentCheckoutPeriod,
       BookCount: currentBookCount,
+      AuthorId: currentAuthorId || '',
       Image: null,
     });
-  }, [currentIsbn, currentTitle, currentGenre, currentDescription, currentCheckoutPeriod, currentBookCount]);
+  }, [
+    currentIsbn,
+    currentTitle,
+    currentGenre,
+    currentDescription,
+    currentCheckoutPeriod,
+    currentBookCount,
+    currentAuthorId,
+  ]);
+
+  useEffect(() => {
+    const fetchAuthors = async () => {
+      try {
+        const response = await getAllAuthors();
+        console.log(response)
+        setAuthors(response);
+      } catch (error) {
+        console.error('Error fetching authors:', error);
+      }
+    };
+
+    fetchAuthors();
+    console.log("authors:", authors)
+  }, []);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -52,7 +82,15 @@ const EditBookForm = ({
     e.preventDefault();
     setError('');
 
-    if (!formData.ISBN || !formData.Title || !formData.Genre || !formData.Description || !formData.CheckoutPeriod || !formData.BookCount) {
+    if (
+      !formData.ISBN ||
+      !formData.Title ||
+      !formData.Genre ||
+      !formData.Description ||
+      !formData.CheckoutPeriod ||
+      !formData.BookCount ||
+      !formData.AuthorId
+    ) {
       setError('Please fill in all fields.');
       return;
     }
@@ -64,12 +102,15 @@ const EditBookForm = ({
     updatedData.append('Description', formData.Description);
     updatedData.append('CheckoutPeriod', formData.CheckoutPeriod);
     updatedData.append('BookCount', formData.BookCount);
+    updatedData.append('AuthorId', formData.AuthorId);
     if (formData.Image) {
       updatedData.append('Image', formData.Image);
     }
 
     try {
-      await updateBookCharacteristic(bookId, updatedData); onClose();
+      await updateBookCharacteristic(bookId, updatedData);
+      onClose();
+      window.location.reload();
     } catch (error) {
       setError('Error updating book characteristic.');
     }
@@ -130,6 +171,33 @@ const EditBookForm = ({
             required
           />
         </div>
+
+        <div className="mb-3">
+          <label htmlFor="AuthorId" className="form-label">Author</label>
+          <select
+            className="form-control"
+            id="AuthorId"
+            name="AuthorId"
+            value={formData.AuthorId}
+            onChange={handleInputChange}
+            required
+          >
+            <option value="">Select an author</option>
+            {authors && authors.length > 0 ? (
+              authors.map((author) => (
+                <option key={author.id} value={author.id}>
+                  {`${author.name} ${author.surename}`}
+                </option>
+              ))
+            ) : (
+            <>
+              <option disabled>Loading authors...</option>
+              {console.log("authors:", authors)}
+            </>
+            )}
+          </select>
+        </div>
+
 
         <div className="mb-3">
           <label htmlFor="CheckoutPeriod" className="form-label">Checkout Period (days)</label>

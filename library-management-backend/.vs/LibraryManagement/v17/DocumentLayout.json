@@ -3,6 +3,22 @@
   "WorkspaceRootPath": "C:\\Users\\vampy\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\LibraryManagement\\library-management-backend\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{273326AF-B644-43D7-B92F-68B640E82B61}|LibraryManagement.Application\\LibraryManagement.Application.csproj|C:\\Users\\vampy\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\LibraryManagement\\library-management-backend\\librarymanagement.application\\dtos\\bookcharacteristicsdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{273326AF-B644-43D7-B92F-68B640E82B61}|LibraryManagement.Application\\LibraryManagement.Application.csproj|solutionrelative:librarymanagement.application\\dtos\\bookcharacteristicsdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0676C289-AA36-4879-AF13-7C87E5DC6422}|LibraryManagement\\LibraryManagement.Presentation.csproj|C:\\Users\\vampy\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\LibraryManagement\\library-management-backend\\librarymanagement\\controllers\\bookcharacteristicscontroller .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0676C289-AA36-4879-AF13-7C87E5DC6422}|LibraryManagement\\LibraryManagement.Presentation.csproj|solutionrelative:librarymanagement\\controllers\\bookcharacteristicscontroller .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0676C289-AA36-4879-AF13-7C87E5DC6422}|LibraryManagement\\LibraryManagement.Presentation.csproj|C:\\Users\\vampy\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\LibraryManagement\\library-management-backend\\librarymanagement\\controllers\\authorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0676C289-AA36-4879-AF13-7C87E5DC6422}|LibraryManagement\\LibraryManagement.Presentation.csproj|solutionrelative:librarymanagement\\controllers\\authorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C54D32E6-ABBE-409C-80A2-7D5BB3275231}|LibraryManagement.Infrastructure\\LibraryManagement.Infrastructure.csproj|C:\\Users\\vampy\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\LibraryManagement\\library-management-backend\\librarymanagement.infrastructure\\persistence\\repositories\\bookcharacteristicsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C54D32E6-ABBE-409C-80A2-7D5BB3275231}|LibraryManagement.Infrastructure\\LibraryManagement.Infrastructure.csproj|solutionrelative:librarymanagement.infrastructure\\persistence\\repositories\\bookcharacteristicsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{C54D32E6-ABBE-409C-80A2-7D5BB3275231}|LibraryManagement.Infrastructure\\LibraryManagement.Infrastructure.csproj|C:\\Users\\vampy\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\LibraryManagement\\library-management-backend\\librarymanagement.infrastructure\\persistence\\repositories\\bookhasuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C54D32E6-ABBE-409C-80A2-7D5BB3275231}|LibraryManagement.Infrastructure\\LibraryManagement.Infrastructure.csproj|solutionrelative:librarymanagement.infrastructure\\persistence\\repositories\\bookhasuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -17,14 +33,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{C54D32E6-ABBE-409C-80A2-7D5BB3275231}|LibraryManagement.Infrastructure\\LibraryManagement.Infrastructure.csproj|C:\\Users\\vampy\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\LibraryManagement\\library-management-backend\\librarymanagement.infrastructure\\persistence\\repositories\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C54D32E6-ABBE-409C-80A2-7D5BB3275231}|LibraryManagement.Infrastructure\\LibraryManagement.Infrastructure.csproj|solutionrelative:librarymanagement.infrastructure\\persistence\\repositories\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0676C289-AA36-4879-AF13-7C87E5DC6422}|LibraryManagement\\LibraryManagement.Presentation.csproj|C:\\Users\\vampy\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\LibraryManagement\\library-management-backend\\librarymanagement\\controllers\\bookcharacteristicscontroller .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0676C289-AA36-4879-AF13-7C87E5DC6422}|LibraryManagement\\LibraryManagement.Presentation.csproj|solutionrelative:librarymanagement\\controllers\\bookcharacteristicscontroller .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{273326AF-B644-43D7-B92F-68B640E82B61}|LibraryManagement.Application\\LibraryManagement.Application.csproj|C:\\Users\\vampy\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\LibraryManagement\\library-management-backend\\librarymanagement.application\\dtos\\bookcharacteristicsdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{273326AF-B644-43D7-B92F-68B640E82B61}|LibraryManagement.Application\\LibraryManagement.Application.csproj|solutionrelative:librarymanagement.application\\dtos\\bookcharacteristicsdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{273326AF-B644-43D7-B92F-68B640E82B61}|LibraryManagement.Application\\LibraryManagement.Application.csproj|C:\\Users\\vampy\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\LibraryManagement\\library-management-backend\\librarymanagement.application\\dtos\\registerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -99,10 +107,6 @@
       "RelativeMoniker": "D:0:0:{C54D32E6-ABBE-409C-80A2-7D5BB3275231}|LibraryManagement.Infrastructure\\LibraryManagement.Infrastructure.csproj|solutionrelative:librarymanagement.infrastructure\\persistence\\repositories\\authorrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C54D32E6-ABBE-409C-80A2-7D5BB3275231}|LibraryManagement.Infrastructure\\LibraryManagement.Infrastructure.csproj|C:\\Users\\vampy\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\LibraryManagement\\library-management-backend\\librarymanagement.infrastructure\\persistence\\repositories\\bookcharacteristicsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C54D32E6-ABBE-409C-80A2-7D5BB3275231}|LibraryManagement.Infrastructure\\LibraryManagement.Infrastructure.csproj|solutionrelative:librarymanagement.infrastructure\\persistence\\repositories\\bookcharacteristicsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{C54D32E6-ABBE-409C-80A2-7D5BB3275231}|LibraryManagement.Infrastructure\\LibraryManagement.Infrastructure.csproj|C:\\Users\\vampy\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\LibraryManagement\\library-management-backend\\librarymanagement.infrastructure\\persistence\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C54D32E6-ABBE-409C-80A2-7D5BB3275231}|LibraryManagement.Infrastructure\\LibraryManagement.Infrastructure.csproj|solutionrelative:librarymanagement.infrastructure\\persistence\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -113,10 +117,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{C54D32E6-ABBE-409C-80A2-7D5BB3275231}|LibraryManagement.Infrastructure\\LibraryManagement.Infrastructure.csproj|C:\\Users\\vampy\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\LibraryManagement\\library-management-backend\\librarymanagement.infrastructure\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C54D32E6-ABBE-409C-80A2-7D5BB3275231}|LibraryManagement.Infrastructure\\LibraryManagement.Infrastructure.csproj|solutionrelative:librarymanagement.infrastructure\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0676C289-AA36-4879-AF13-7C87E5DC6422}|LibraryManagement\\LibraryManagement.Presentation.csproj|C:\\Users\\vampy\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\LibraryManagement\\library-management-backend\\librarymanagement\\controllers\\authorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0676C289-AA36-4879-AF13-7C87E5DC6422}|LibraryManagement\\LibraryManagement.Presentation.csproj|solutionrelative:librarymanagement\\controllers\\authorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0676C289-AA36-4879-AF13-7C87E5DC6422}|LibraryManagement\\LibraryManagement.Presentation.csproj|C:\\Users\\vampy\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\LibraryManagement\\library-management-backend\\librarymanagement\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -142,71 +142,37 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "UserBookDto.cs",
-              "DocumentMoniker": "C:\\Users\\vampy\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\LibraryManagement\\library-management-backend\\LibraryManagement.Application\\DTOs\\UserBookDto.cs",
-              "RelativeDocumentMoniker": "LibraryManagement.Application\\DTOs\\UserBookDto.cs",
-              "ToolTip": "C:\\Users\\vampy\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\LibraryManagement\\library-management-backend\\LibraryManagement.Application\\DTOs\\UserBookDto.cs",
-              "RelativeToolTip": "LibraryManagement.Application\\DTOs\\UserBookDto.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAcAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-01T19:38:11.163Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "ReturnBookDto.cs",
-              "DocumentMoniker": "C:\\Users\\vampy\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\LibraryManagement\\library-management-backend\\LibraryManagement.Application\\DTOs\\ReturnBookDto.cs",
-              "RelativeDocumentMoniker": "LibraryManagement.Application\\DTOs\\ReturnBookDto.cs",
-              "ToolTip": "C:\\Users\\vampy\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\LibraryManagement\\library-management-backend\\LibraryManagement.Application\\DTOs\\ReturnBookDto.cs",
-              "RelativeToolTip": "LibraryManagement.Application\\DTOs\\ReturnBookDto.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-01T19:44:29.971Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "RegisterDto.cs",
-              "DocumentMoniker": "C:\\Users\\vampy\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\LibraryManagement\\library-management-backend\\LibraryManagement.Application\\DTOs\\RegisterDto.cs",
-              "RelativeDocumentMoniker": "LibraryManagement.Application\\DTOs\\RegisterDto.cs",
-              "ToolTip": "C:\\Users\\vampy\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\LibraryManagement\\library-management-backend\\LibraryManagement.Application\\DTOs\\RegisterDto.cs",
-              "RelativeToolTip": "LibraryManagement.Application\\DTOs\\RegisterDto.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-30T20:30:43.564Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 0,
               "Title": "BookCharacteristicsDto.cs",
               "DocumentMoniker": "C:\\Users\\vampy\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\LibraryManagement\\library-management-backend\\LibraryManagement.Application\\DTOs\\BookCharacteristicsDto.cs",
               "RelativeDocumentMoniker": "LibraryManagement.Application\\DTOs\\BookCharacteristicsDto.cs",
               "ToolTip": "C:\\Users\\vampy\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\LibraryManagement\\library-management-backend\\LibraryManagement.Application\\DTOs\\BookCharacteristicsDto.cs",
               "RelativeToolTip": "LibraryManagement.Application\\DTOs\\BookCharacteristicsDto.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAApAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAvAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T00:04:42.546Z"
+              "WhenOpened": "2024-12-02T00:04:42.546Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "BookCharacteristicsController .cs",
               "DocumentMoniker": "C:\\Users\\vampy\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\LibraryManagement\\library-management-backend\\LibraryManagement\\Controllers\\BookCharacteristicsController .cs",
               "RelativeDocumentMoniker": "LibraryManagement\\Controllers\\BookCharacteristicsController .cs",
-              "ToolTip": "C:\\Users\\vampy\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\LibraryManagement\\library-management-backend\\LibraryManagement\\Controllers\\BookCharacteristicsController .cs",
-              "RelativeToolTip": "LibraryManagement\\Controllers\\BookCharacteristicsController .cs",
-              "ViewState": "AQIAAG0AAAAAAAAAAAAmwIMAAAAJAAAA",
+              "ToolTip": "C:\\Users\\vampy\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\LibraryManagement\\library-management-backend\\LibraryManagement\\Controllers\\BookCharacteristicsController .cs*",
+              "RelativeToolTip": "LibraryManagement\\Controllers\\BookCharacteristicsController .cs*",
+              "ViewState": "AQIAAGgAAAAAAAAAAAAcwH0AAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-30T20:48:47.839Z"
+              "WhenOpened": "2024-11-30T20:48:47.839Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
               "Title": "BookHasUserController.cs",
               "DocumentMoniker": "C:\\Users\\vampy\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\LibraryManagement\\library-management-backend\\LibraryManagement\\Controllers\\BookHasUserController.cs",
               "RelativeDocumentMoniker": "LibraryManagement\\Controllers\\BookHasUserController.cs",
@@ -219,7 +185,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "Repository.cs",
               "DocumentMoniker": "C:\\Users\\vampy\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\LibraryManagement\\library-management-backend\\LibraryManagement.Infrastructure\\Persistence\\Repositories\\Repository.cs",
               "RelativeDocumentMoniker": "LibraryManagement.Infrastructure\\Persistence\\Repositories\\Repository.cs",
@@ -232,7 +198,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "IBookHasUserRepository.cs",
               "DocumentMoniker": "C:\\Users\\vampy\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\LibraryManagement\\library-management-backend\\LibraryManagement.Core\\Interfaces\\IBookHasUserRepository.cs",
               "RelativeDocumentMoniker": "LibraryManagement.Core\\Interfaces\\IBookHasUserRepository.cs",
@@ -245,20 +211,82 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "BookHasUserRepository.cs",
               "DocumentMoniker": "C:\\Users\\vampy\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\LibraryManagement\\library-management-backend\\LibraryManagement.Infrastructure\\Persistence\\Repositories\\BookHasUserRepository.cs",
               "RelativeDocumentMoniker": "LibraryManagement.Infrastructure\\Persistence\\Repositories\\BookHasUserRepository.cs",
-              "ToolTip": "C:\\Users\\vampy\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\LibraryManagement\\library-management-backend\\LibraryManagement.Infrastructure\\Persistence\\Repositories\\BookHasUserRepository.cs*",
-              "RelativeToolTip": "LibraryManagement.Infrastructure\\Persistence\\Repositories\\BookHasUserRepository.cs*",
-              "ViewState": "AQIAABgAAAAAAAAAAAAmwCQAAAAIAAAA",
+              "ToolTip": "C:\\Users\\vampy\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\LibraryManagement\\library-management-backend\\LibraryManagement.Infrastructure\\Persistence\\Repositories\\BookHasUserRepository.cs",
+              "RelativeToolTip": "LibraryManagement.Infrastructure\\Persistence\\Repositories\\BookHasUserRepository.cs",
+              "ViewState": "AQIAABkAAAAAAAAAAAAYwCQAAABAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-01T18:39:23.157Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "BookCharacteristicsRepository.cs",
+              "DocumentMoniker": "C:\\Users\\vampy\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\LibraryManagement\\library-management-backend\\LibraryManagement.Infrastructure\\Persistence\\Repositories\\BookCharacteristicsRepository.cs",
+              "RelativeDocumentMoniker": "LibraryManagement.Infrastructure\\Persistence\\Repositories\\BookCharacteristicsRepository.cs",
+              "ToolTip": "C:\\Users\\vampy\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\LibraryManagement\\library-management-backend\\LibraryManagement.Infrastructure\\Persistence\\Repositories\\BookCharacteristicsRepository.cs",
+              "RelativeToolTip": "LibraryManagement.Infrastructure\\Persistence\\Repositories\\BookCharacteristicsRepository.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAIwBIAAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-01T19:47:17.664Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AuthorController.cs",
+              "DocumentMoniker": "C:\\Users\\vampy\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\LibraryManagement\\library-management-backend\\LibraryManagement\\Controllers\\AuthorController.cs",
+              "RelativeDocumentMoniker": "LibraryManagement\\Controllers\\AuthorController.cs",
+              "ToolTip": "C:\\Users\\vampy\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\LibraryManagement\\library-management-backend\\LibraryManagement\\Controllers\\AuthorController.cs",
+              "RelativeToolTip": "LibraryManagement\\Controllers\\AuthorController.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAqwD8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-30T23:19:25.667Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "RegisterDto.cs",
+              "DocumentMoniker": "C:\\Users\\vampy\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\LibraryManagement\\library-management-backend\\LibraryManagement.Application\\DTOs\\RegisterDto.cs",
+              "RelativeDocumentMoniker": "LibraryManagement.Application\\DTOs\\RegisterDto.cs",
+              "ToolTip": "C:\\Users\\vampy\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\LibraryManagement\\library-management-backend\\LibraryManagement.Application\\DTOs\\RegisterDto.cs",
+              "RelativeToolTip": "LibraryManagement.Application\\DTOs\\RegisterDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-30T20:30:43.564Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 9,
+              "Title": "ReturnBookDto.cs",
+              "DocumentMoniker": "C:\\Users\\vampy\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\LibraryManagement\\library-management-backend\\LibraryManagement.Application\\DTOs\\ReturnBookDto.cs",
+              "RelativeDocumentMoniker": "LibraryManagement.Application\\DTOs\\ReturnBookDto.cs",
+              "ToolTip": "C:\\Users\\vampy\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\LibraryManagement\\library-management-backend\\LibraryManagement.Application\\DTOs\\ReturnBookDto.cs",
+              "RelativeToolTip": "LibraryManagement.Application\\DTOs\\ReturnBookDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-01T19:44:29.971Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "UserBookDto.cs",
+              "DocumentMoniker": "C:\\Users\\vampy\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\LibraryManagement\\library-management-backend\\LibraryManagement.Application\\DTOs\\UserBookDto.cs",
+              "RelativeDocumentMoniker": "LibraryManagement.Application\\DTOs\\UserBookDto.cs",
+              "ToolTip": "C:\\Users\\vampy\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\LibraryManagement\\library-management-backend\\LibraryManagement.Application\\DTOs\\UserBookDto.cs",
+              "RelativeToolTip": "LibraryManagement.Application\\DTOs\\UserBookDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-01T19:38:11.163Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "UserDto.cs",
               "DocumentMoniker": "C:\\Users\\vampy\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\LibraryManagement\\library-management-backend\\LibraryManagement.Application\\DTOs\\UserDto.cs",
               "RelativeDocumentMoniker": "LibraryManagement.Application\\DTOs\\UserDto.cs",
@@ -270,7 +298,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 12,
               "Title": "AuthorService.cs",
               "DocumentMoniker": "C:\\Users\\vampy\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\LibraryManagement\\library-management-backend\\LibraryManagement.Application\\Services\\AuthorService.cs",
               "RelativeDocumentMoniker": "LibraryManagement.Application\\Services\\AuthorService.cs",
@@ -282,7 +310,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 14,
               "Title": "Book.cs",
               "DocumentMoniker": "C:\\Users\\vampy\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\LibraryManagement\\library-management-backend\\LibraryManagement.Core\\Entities\\Book.cs",
               "RelativeDocumentMoniker": "LibraryManagement.Core\\Entities\\Book.cs",
@@ -294,7 +322,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 13,
               "Title": "Author.cs",
               "DocumentMoniker": "C:\\Users\\vampy\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\LibraryManagement\\library-management-backend\\LibraryManagement.Core\\Entities\\Author.cs",
               "RelativeDocumentMoniker": "LibraryManagement.Core\\Entities\\Author.cs",
@@ -306,7 +334,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 16,
               "Title": "BookHasUser.cs",
               "DocumentMoniker": "C:\\Users\\vampy\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\LibraryManagement\\library-management-backend\\LibraryManagement.Core\\Entities\\BookHasUser.cs",
               "RelativeDocumentMoniker": "LibraryManagement.Core\\Entities\\BookHasUser.cs",
@@ -318,7 +346,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 17,
               "Title": "User.cs",
               "DocumentMoniker": "C:\\Users\\vampy\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\LibraryManagement\\library-management-backend\\LibraryManagement.Core\\Entities\\User.cs",
               "RelativeDocumentMoniker": "LibraryManagement.Core\\Entities\\User.cs",
@@ -330,7 +358,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 18,
               "Title": "IAuthorRepository.cs",
               "DocumentMoniker": "C:\\Users\\vampy\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\LibraryManagement\\library-management-backend\\LibraryManagement.Core\\Interfaces\\IAuthorRepository.cs",
               "RelativeDocumentMoniker": "LibraryManagement.Core\\Interfaces\\IAuthorRepository.cs",
@@ -342,7 +370,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 19,
               "Title": "IBookCharacteristicsRepository.cs",
               "DocumentMoniker": "C:\\Users\\vampy\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\LibraryManagement\\library-management-backend\\LibraryManagement.Core\\Interfaces\\IBookCharacteristicsRepository.cs",
               "RelativeDocumentMoniker": "LibraryManagement.Core\\Interfaces\\IBookCharacteristicsRepository.cs",
@@ -354,7 +382,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 21,
               "Title": "IBookRepository.cs",
               "DocumentMoniker": "C:\\Users\\vampy\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\LibraryManagement\\library-management-backend\\LibraryManagement.Core\\Interfaces\\IBookRepository.cs",
               "RelativeDocumentMoniker": "LibraryManagement.Core\\Interfaces\\IBookRepository.cs",
@@ -366,7 +394,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 22,
               "Title": "IUnitOfWork.cs",
               "DocumentMoniker": "C:\\Users\\vampy\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\LibraryManagement\\library-management-backend\\LibraryManagement.Core\\Interfaces\\IUnitOfWork.cs",
               "RelativeDocumentMoniker": "LibraryManagement.Core\\Interfaces\\IUnitOfWork.cs",
@@ -378,7 +406,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 24,
               "Title": "LibraryManagement.Infrastructure",
               "DocumentMoniker": "C:\\Users\\vampy\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\LibraryManagement\\library-management-backend\\LibraryManagement.Infrastructure\\LibraryManagement.Infrastructure.csproj",
               "RelativeDocumentMoniker": "LibraryManagement.Infrastructure\\LibraryManagement.Infrastructure.csproj",
@@ -390,7 +418,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 25,
               "Title": "AuthorRepository.cs",
               "DocumentMoniker": "C:\\Users\\vampy\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\LibraryManagement\\library-management-backend\\LibraryManagement.Infrastructure\\Persistence\\Repositories\\AuthorRepository.cs",
               "RelativeDocumentMoniker": "LibraryManagement.Infrastructure\\Persistence\\Repositories\\AuthorRepository.cs",
@@ -402,7 +430,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 15,
               "Title": "BookCharacteristics.cs",
               "DocumentMoniker": "C:\\Users\\vampy\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\LibraryManagement\\library-management-backend\\LibraryManagement.Core\\Entities\\BookCharacteristics.cs",
               "RelativeDocumentMoniker": "LibraryManagement.Core\\Entities\\BookCharacteristics.cs",
@@ -414,19 +442,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "BookCharacteristicsRepository.cs",
-              "DocumentMoniker": "C:\\Users\\vampy\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\LibraryManagement\\library-management-backend\\LibraryManagement.Infrastructure\\Persistence\\Repositories\\BookCharacteristicsRepository.cs",
-              "RelativeDocumentMoniker": "LibraryManagement.Infrastructure\\Persistence\\Repositories\\BookCharacteristicsRepository.cs",
-              "ToolTip": "C:\\Users\\vampy\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\LibraryManagement\\library-management-backend\\LibraryManagement.Infrastructure\\Persistence\\Repositories\\BookCharacteristicsRepository.cs",
-              "RelativeToolTip": "LibraryManagement.Infrastructure\\Persistence\\Repositories\\BookCharacteristicsRepository.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAIwBIAAAAjAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-01T19:47:17.664Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 23,
               "Title": "IUserRepository.cs",
               "DocumentMoniker": "C:\\Users\\vampy\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\LibraryManagement\\library-management-backend\\LibraryManagement.Core\\Interfaces\\IUserRepository.cs",
               "RelativeDocumentMoniker": "LibraryManagement.Core\\Interfaces\\IUserRepository.cs",
@@ -438,7 +454,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 20,
               "Title": "IRepository.cs",
               "DocumentMoniker": "C:\\Users\\vampy\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\LibraryManagement\\library-management-backend\\LibraryManagement.Core\\Interfaces\\IRepository.cs",
               "RelativeDocumentMoniker": "LibraryManagement.Core\\Interfaces\\IRepository.cs",
@@ -450,7 +466,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 26,
               "Title": "UserRepository.cs",
               "DocumentMoniker": "C:\\Users\\vampy\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\LibraryManagement\\library-management-backend\\LibraryManagement.Infrastructure\\Persistence\\Repositories\\UserRepository.cs",
               "RelativeDocumentMoniker": "LibraryManagement.Infrastructure\\Persistence\\Repositories\\UserRepository.cs",
@@ -462,7 +478,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 28,
               "Title": "UnitOfWork.cs",
               "DocumentMoniker": "C:\\Users\\vampy\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\LibraryManagement\\library-management-backend\\LibraryManagement.Infrastructure\\UnitOfWork.cs",
               "RelativeDocumentMoniker": "LibraryManagement.Infrastructure\\UnitOfWork.cs",
@@ -498,7 +514,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 27,
               "Title": "LibraryDbContext .cs",
               "DocumentMoniker": "C:\\Users\\vampy\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\LibraryManagement\\library-management-backend\\LibraryManagement.Infrastructure\\Persistence\\LibraryDbContext .cs",
               "RelativeDocumentMoniker": "LibraryManagement.Infrastructure\\Persistence\\LibraryDbContext .cs",
@@ -507,18 +523,6 @@
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAmAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-01T18:44:32.293Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 28,
-              "Title": "AuthorController.cs",
-              "DocumentMoniker": "C:\\Users\\vampy\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\LibraryManagement\\library-management-backend\\LibraryManagement\\Controllers\\AuthorController.cs",
-              "RelativeDocumentMoniker": "LibraryManagement\\Controllers\\AuthorController.cs",
-              "ToolTip": "C:\\Users\\vampy\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\LibraryManagement\\library-management-backend\\LibraryManagement\\Controllers\\AuthorController.cs",
-              "RelativeToolTip": "LibraryManagement\\Controllers\\AuthorController.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAAD8AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-30T23:19:25.667Z"
             },
             {
               "$type": "Document",

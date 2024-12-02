@@ -11,7 +11,7 @@ namespace LibraryManagement.Application.DTOs
         public string Genre { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
         public int AuthorId { get; set; }
-        public IFormFile Image { get; set; }
+        public IFormFile? Image { get; set; }
         public int CheckoutPeriod { get; set; }
         public int BookCount { get; set; }
     }

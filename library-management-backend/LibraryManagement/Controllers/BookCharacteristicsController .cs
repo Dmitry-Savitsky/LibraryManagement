@@ -120,6 +120,13 @@ namespace LibraryManagement.Presentation.Controllers
             bookCharacteristic.AuthorId = dto.AuthorId;
             bookCharacteristic.CheckoutPeriod = dto.CheckoutPeriod;
             bookCharacteristic.BookCount = dto.BookCount;
+            bookCharacteristic.ImgPath = bookCharacteristic.ImgPath;
+
+            if (dto.Image != null && dto.Image.Length > 0)
+            {
+                var imagePath = await SaveImageAsync(dto.Image);
+                bookCharacteristic.ImgPath = imagePath;
+            }
 
             _unitOfWork.BookCharacteristics.Update(bookCharacteristic);
             await _unitOfWork.SaveChangesAsync();
