@@ -1,6 +1,6 @@
 import BookList from "./pages/BookListPage"; 
 import BookDetails from "./pages/BookDetailsPage"; 
-import AddBook from "./pages/AddBookPage"; 
+import Management from "./pages/ManagementPage"; 
 import UserBooks from "./pages/UserBooksPage"; 
 import Auth from "./pages/Auth"; 
 import Main from "./pages/MainPage";
@@ -16,7 +16,7 @@ import {
 
 export const authRoutes = [
   {
-    path: ADD_BOOK_ROUTE, Component: AddBook,
+    path: ADD_BOOK_ROUTE, Component: Management,
   },
   {
     path: USER_BOOKS_ROUTE, Component: UserBooks,

@@ -4,7 +4,7 @@ import { addBookCharacteristic } from '../http/bookCharacteristicsApi';
 import { addAuthor, deleteAuthor, getAllAuthors } from '../http/authorApi'; 
 import AddAuthorForm from '../components/AddAuthorForm';
 
-const AddBookPage = () => {
+const ManagementPage = () => {
   const [authors, setAuthors] = useState([]);
   const [formData, setFormData] = useState({
     ISBN: '',
@@ -153,4 +153,4 @@ const AddBookPage = () => {
   );
 };
 
-export default AddBookPage;
+export default ManagementPage;

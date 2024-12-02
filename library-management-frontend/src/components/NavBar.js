@@ -61,7 +61,7 @@ const NavBar = () => {
                                         onClick={() => navigate(ADD_BOOK_ROUTE)}
                                         variant="outline-primary"
                                     >
-                                        Добавить книгу
+                                        Управление
                                     </Button>
                                 )}
 
