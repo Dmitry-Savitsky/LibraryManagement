@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { addBookCharacteristic } from '../http/bookCharacteristicsApi';
+import { addAuthor, deleteAuthor, getAllAuthors } from '../http/authorApi'; 
+import AddAuthorForm from '../components/AddAuthorForm';
 
 const AddBookPage = () => {
-  const navigate = useNavigate();
+  const [authors, setAuthors] = useState([]);
   const [formData, setFormData] = useState({
     ISBN: '',
     Title: '',
@@ -15,6 +17,38 @@ const AddBookPage = () => {
     Image: null,
   });
   const [error, setError] = useState('');
+  const navigate = useNavigate();
+
+  const fetchAuthors = async () => {
+    try {
+      const data = await getAllAuthors();
+      setAuthors(data);
+    } catch (error) {
+      setError('Error fetching authors.');
+    }
+  };
+
+  const handleAddAuthor = async (authorData) => {
+    try {
+      const newAuthor = await addAuthor(authorData);
+      setAuthors([...authors, newAuthor]);
+    } catch (error) {
+      setError('Error adding author.');
+    }
+  };
+
+  const handleDeleteAuthor = async (id) => {
+    try {
+      await deleteAuthor(id);
+      setAuthors(authors.filter((author) => author.id !== id));
+    } catch (error) {
+      setError('Error deleting author.');
+    }
+  };
+
+  useEffect(() => {
+    fetchAuthors();
+  }, []);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -35,7 +69,6 @@ const AddBookPage = () => {
     e.preventDefault();
     setError('');
 
-
     if (!formData.ISBN || !formData.Title || !formData.Genre || !formData.Description || !formData.AuthorId || !formData.CheckoutPeriod || !formData.BookCount || !formData.Image) {
       setError('Please fill in all fields.');
       return;
@@ -52,7 +85,7 @@ const AddBookPage = () => {
     bookData.append('Image', formData.Image);
 
     try {
-      const data = await addBookCharacteristic(bookData);
+      await addBookCharacteristic(bookData);
       navigate(`/books`);
     } catch (error) {
       setError('Error adding book characteristic.');
@@ -61,113 +94,61 @@ const AddBookPage = () => {
 
   return (
     <div className="container mt-5">
-      <h2>Управление</h2>
       {error && <div className="alert alert-danger">{error}</div>}
-      <form onSubmit={handleSubmit}>
-        <div className="mb-3">
-          <label htmlFor="ISBN" className="form-label">ISBN</label>
-          <input
-            type="text"
-            className="form-control"
-            id="ISBN"
-            name="ISBN"
-            value={formData.ISBN}
-            onChange={handleInputChange}
-            required
-          />
+
+      <div className="row">
+        <div className="col-md-6">
+          <h3>Список авторов</h3>
+          <ul className="list-group mb-4">
+            {authors.map((author) => (
+              <li key={author.id} className="list-group-item d-flex justify-content-between align-items-center">
+                {`${author.name} ${author.surename}`}
+                <button className="btn btn-danger btn-sm" onClick={() => handleDeleteAuthor(author.id)}>
+                  Удалить
+                </button>
+              </li>
+            ))}
+          </ul>
+          <h4>Добавить автора</h4>
+          <AddAuthorForm onAddAuthor={handleAddAuthor} />
         </div>
 
-        <div className="mb-3">
-          <label htmlFor="Title" className="form-label">Title</label>
-          <input
-            type="text"
-            className="form-control"
-            id="Title"
-            name="Title"
-            value={formData.Title}
-            onChange={handleInputChange}
-            required
-          />
-        </div>
+        <div className="col-md-6">
+          <h3>Добавить книгу</h3>
+          <form onSubmit={handleSubmit} className="card p-4 shadow-sm">
+            {['ISBN', 'Title', 'Genre', 'Description', 'AuthorId', 'CheckoutPeriod', 'BookCount'].map((field) => (
+              <div className="mb-3" key={field}>
+                <label htmlFor={field} className="form-label">
+                  {field}
+                </label>
+                <input
+                  type={field === 'Description' ? 'textarea' : 'text'}
+                  className="form-control"
+                  id={field}
+                  name={field}
+                  value={formData[field]}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+            ))}
 
-        <div className="mb-3">
-          <label htmlFor="Genre" className="form-label">Genre</label>
-          <input
-            type="text"
-            className="form-control"
-            id="Genre"
-            name="Genre"
-            value={formData.Genre}
-            onChange={handleInputChange}
-            required
-          />
-        </div>
+            <div className="mb-3">
+              <label htmlFor="Image" className="form-label">Book image</label>
+              <input
+                type="file"
+                className="form-control"
+                id="Image"
+                name="Image"
+                onChange={handleFileChange}
+                required
+              />
+            </div>
 
-        <div className="mb-3">
-          <label htmlFor="Description" className="form-label">Description</label>
-          <textarea
-            className="form-control"
-            id="Description"
-            name="Description"
-            value={formData.Description}
-            onChange={handleInputChange}
-            required
-          />
+            <button type="submit" className="btn btn-primary w-100">Добавить книгу</button>
+          </form>
         </div>
-
-        <div className="mb-3">
-          <label htmlFor="AuthorId" className="form-label">Author ID</label>
-          <input
-            type="number"
-            className="form-control"
-            id="AuthorId"
-            name="AuthorId"
-            value={formData.AuthorId}
-            onChange={handleInputChange}
-            required
-          />
-        </div>
-
-        <div className="mb-3">
-          <label htmlFor="CheckoutPeriod" className="form-label">Checkout Period (days)</label>
-          <input
-            type="number"
-            className="form-control"
-            id="CheckoutPeriod"
-            name="CheckoutPeriod"
-            value={formData.CheckoutPeriod}
-            onChange={handleInputChange}
-            required
-          />
-        </div>
-
-        <div className="mb-3">
-          <label htmlFor="BookCount" className="form-label">Book Count</label>
-          <input
-            type="number"
-            className="form-control"
-            id="BookCount"
-            name="BookCount"
-            value={formData.BookCount}
-            onChange={handleInputChange}
-            required
-          />
-        </div>
-
-        <div className="mb-3">
-          <label htmlFor="Image" className="form-label">Book Image</label>
-          <input
-            type="file"
-            className="form-control"
-            id="Image"
-            name="Image"
-            onChange={handleFileChange}
-            required
-          />
-        </div>
-
-        <button type="submit" className="btn btn-primary">Add Book</button>
-      </form>
+      </div>
     </div>
   );
 };
