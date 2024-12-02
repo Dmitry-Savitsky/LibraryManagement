@@ -61,7 +61,7 @@ const AddBookPage = () => {
 
   return (
     <div className="container mt-5">
-      <h2>Add New Book</h2>
+      <h2>Управление</h2>
       {error && <div className="alert alert-danger">{error}</div>}
       <form onSubmit={handleSubmit}>
         <div className="mb-3">

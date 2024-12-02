@@ -46,3 +46,13 @@ export const addAuthor = async (authorData) => {
         throw error;
     }
 };
+
+export const deleteAuthor = async (id) => {
+    try {
+      await $host.delete(`api/author/${id}`);
+      return { message: "Author deleted successfully." };
+    } catch (error) {
+      console.error(`Error deleting Author with ID ${id}:`, error);
+      throw error;
+    }
+  };

@@ -59,5 +59,17 @@ namespace LibraryManagement.Presentation.Controllers
             return CreatedAtAction(nameof(GetAll), new { id = author.Id }, author);
         }
 
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var author = await _unitOfWork.Authors.GetByIdAsync(id);
+            if (author == null)
+                return NotFound($"Author with ID {id} not found.");
+
+            _unitOfWork.Authors.Delete(author);
+            await _unitOfWork.SaveChangesAsync();
+
+            return NoContent();
+        }
     }
 }
