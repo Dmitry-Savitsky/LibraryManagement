@@ -1,17 +1,38 @@
-*.FASL
-*.fasl
-*.lisp-temp
-*.dfsl
-*.pfsl
-*.d64fsl
-*.p64fsl
-*.lx64fsl
-*.lx32fsl
-*.dx64fsl
-*.dx32fsl
-*.fx64fsl
-*.fx32fsl
-*.sx64fsl
-*.sx32fsl
-*.wx64fsl
-*.wx32fsl
+# ASP.NET
+## User-specific files
+.idea/
+.vscode/
+
+# ASP.NET build results
+bin/
+obj/
+
+# Node.js dependencies
+node_modules/
+
+# React build output
+build/
+dist/
+
+# Log files
+*.log
+
+# VS Code settings
+.vscode/
+
+# Windows Installer files
+Thumbs.db
+
+# macOS system files
+.DS_Store
+
+# npm debug log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Visual Studio for Mac configuration
+.vscode/
+
+# JetBrains Rider configuration
+.idea/
