@@ -19,12 +19,6 @@ namespace LibraryManagement.Infrastructure.Repositories
             _dbContext = dbContext;
         }
 
-
-        public Task AddBookImageAsync(int bookCharacteristicsId, string imagePath)
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task<IEnumerable<BookCharacteristics>> GetBooksByAuthorIdAsync(int authorId)
         {
             return await _dbContext.BookCharacteristics

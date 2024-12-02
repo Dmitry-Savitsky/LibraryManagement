@@ -10,7 +10,5 @@ namespace LibraryManagement.Core.Interfaces
     public interface IAuthorRepository : IRepository<Author>
     {
         Task<IEnumerable<Author>> GetAuthorsByCountryAsync(string country);
-
-        //Task<IEnumerable<Book>> GetBooksByAuthorIdAsync(int authorId); // не реализовано в контроллере
     }
 }

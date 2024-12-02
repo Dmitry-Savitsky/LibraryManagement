@@ -7,6 +7,5 @@ namespace LibraryManagement.Core.Interfaces
 
         Task<IEnumerable<BookCharacteristics>> GetBooksByAuthorIdAsync(int authorId);
 
-        Task AddBookImageAsync(int bookCharacteristicsId, string imagePath);
     }
 }
