@@ -66,7 +66,6 @@ namespace LibraryManagement.Presentation.Controllers
             var bookHasUser = await _bookHasUserRepository
                 .GetByConditionAsync(b => b.BookId == returnBookDto.BookId && b.UserId == returnBookDto.UserId);
 
-
             if (!bookHasUser.Any())
                 return NotFound("No record found for this book and user.");
 
@@ -81,8 +80,10 @@ namespace LibraryManagement.Presentation.Controllers
             if (bookCharacteristics == null)
                 return NotFound("Book characteristics not found.");
 
-            var recordToRemove = bookHasUser.First();
-            _unitOfWork.BooksHasUsers.Delete(recordToRemove);
+            var recordToUpdate = bookHasUser.First();
+            recordToUpdate.TimeReturned = DateTime.UtcNow;
+
+            _unitOfWork.BooksHasUsers.Update(recordToUpdate);
 
             bookCharacteristics.BookCount += 1;
 
@@ -94,7 +95,8 @@ namespace LibraryManagement.Presentation.Controllers
             {
                 Message = "Book returned successfully.",
                 BookId = returnBookDto.BookId,
-                UserId = returnBookDto.UserId
+                UserId = returnBookDto.UserId,
+                TimeReturned = recordToUpdate.TimeReturned
             });
         }
 
