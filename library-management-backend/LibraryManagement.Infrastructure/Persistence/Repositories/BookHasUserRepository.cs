@@ -18,15 +18,16 @@ namespace LibraryManagement.Infrastructure.Repositories
 
         public async Task<IEnumerable<Book>> GetAvailableBooksByCharacteristicsIdAsync(int bookCharacteristicsId)
         {
-                         var books = await _dbContext.Books
+            var books = await _dbContext.Books
                 .Where(b => b.BookCharacteristicsId == bookCharacteristicsId)
                 .ToListAsync();
 
-                         var reservedBookIds = await _dbContext.BookHasUsers
+            var reservedBookIds = await _dbContext.BookHasUsers
+                .Where(bhu => bhu.TimeReturned == null)
                 .Select(bhu => bhu.BookId)
                 .ToListAsync();
 
-                         return books.Where(b => !reservedBookIds.Contains(b.Id)).ToList();
+            return books.Where(b => !reservedBookIds.Contains(b.Id)).ToList();
         }
 
         public async Task<IEnumerable<BookHasUser>> GetByConditionAsync(Expression<Func<BookHasUser, bool>> predicate)

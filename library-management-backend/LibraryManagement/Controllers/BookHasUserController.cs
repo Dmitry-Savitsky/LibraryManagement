@@ -40,9 +40,9 @@ namespace LibraryManagement.Presentation.Controllers
             {
                 BookId = bookToReserve.Id,
                 UserId = reserveBookDto.UserId,
-                TimeBorrowed = DateTime.UtcNow
+                TimeBorrowed = DateTime.UtcNow,
+                TimeReturned = null
             };
-
 
             await _unitOfWork.BooksHasUsers.AddAsync(bookHasUser);
 
