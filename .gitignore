@@ -1,9 +1,4 @@
-# ASP.NET
-## User-specific files
-.idea/
 .vscode/
-
-
 .vs/
 
 # ASP.NET build results
@@ -20,9 +15,6 @@ dist/
 # Log files
 *.log
 
-# VS Code settings
-.vscode/
-
 # Windows Installer files
 Thumbs.db
 
@@ -33,9 +25,3 @@ Thumbs.db
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-# Visual Studio for Mac configuration
-.vscode/
-
-# JetBrains Rider configuration
-.idea/

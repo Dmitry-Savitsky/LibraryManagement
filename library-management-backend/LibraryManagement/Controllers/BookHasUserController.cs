@@ -45,6 +45,9 @@ namespace LibraryManagement.Presentation.Controllers
 
 
             await _unitOfWork.BooksHasUsers.AddAsync(bookHasUser);
+
+            bookCharacteristics.BookCount--;
+
             _unitOfWork.BookCharacteristics.Update(bookCharacteristics);
 
             await _unitOfWork.SaveChangesAsync();
