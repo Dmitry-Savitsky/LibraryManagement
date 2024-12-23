@@ -43,7 +43,8 @@ namespace LibraryManagement.Infrastructure.Repositories
                 {
                     BookId = bhu.BookId,
                     BookCharacteristics = bhu.Book.BookCharacteristics,
-                    TimeBorrowed = bhu.TimeBorrowed
+                    TimeBorrowed = bhu.TimeBorrowed,
+                    TimeReturned = bhu.TimeReturned
                 })
                 .Distinct()
                 .ToListAsync();

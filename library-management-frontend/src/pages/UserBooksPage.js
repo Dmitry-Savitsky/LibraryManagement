@@ -56,49 +56,89 @@ const UserBooksPage = () => {
     );
   }
 
+  const booksNotReturned = userBooks.filter((book) => book.timeReturned === null);
+  const booksReturned = userBooks.filter((book) => book.timeReturned !== null);
+
   return (
     <Container className="mt-5">
       <h2>Мои книги</h2>
       {successMessage && <Alert variant="success">{successMessage}</Alert>}
       {errorMessage && <Alert variant="danger">{errorMessage}</Alert>}
-      {userBooks.length > 0 ? (
-        <Table striped bordered hover className="mt-3">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Название</th>
-              <th>Жанр</th>
-              <th>Срок сдачи</th>
-              <th>Действия</th>
-            </tr>
-          </thead>
-          <tbody>
-            {userBooks.map((book, index) => {
-              const { bookId, bookCharacteristics, timeBorrowed } = book || {};
-              const checkoutPeriod = bookCharacteristics?.checkoutPeriod;
-              const title = bookCharacteristics?.title || "Неизвестное название";
-              const genre = bookCharacteristics?.genre || "Неизвестный жанр";
 
-              return (
-                <tr key={bookId}>
-                  <td>{index + 1}</td>
-                  <td>{title}</td>
-                  <td>{genre}</td>
-                  <td>{calculateReturnDate(timeBorrowed, checkoutPeriod)}</td>
-                  <td>
-                    <Button
-                      variant="danger"
-                      onClick={() => handleReturnBook(bookId)}
-                    >
-                      Вернуть книгу
-                    </Button>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </Table>
-      ) : (
+      {booksNotReturned.length > 0 && (
+        <div>
+          <Table striped bordered hover className="mt-3">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Название</th>
+                <th>Жанр</th>
+                <th>Срок сдачи</th>
+                <th>Действия</th>
+              </tr>
+            </thead>
+            <tbody>
+              {booksNotReturned.map((book, index) => {
+                const { bookId, bookCharacteristics, timeBorrowed } = book || {};
+                const checkoutPeriod = bookCharacteristics?.checkoutPeriod;
+                const title = bookCharacteristics?.title || "Неизвестное название";
+                const genre = bookCharacteristics?.genre || "Неизвестный жанр";
+
+                return (
+                  <tr key={bookId}>
+                    <td>{index + 1}</td>
+                    <td>{title}</td>
+                    <td>{genre}</td>
+                    <td>{calculateReturnDate(timeBorrowed, checkoutPeriod)}</td>
+                    <td>
+                      <Button
+                        variant="danger"
+                        onClick={() => handleReturnBook(bookId)}
+                      >
+                        Вернуть книгу
+                      </Button>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </Table>
+        </div>
+      )}
+
+      {booksReturned.length > 0 && (
+        <div>
+          <h3>История</h3>
+          <Table striped bordered hover className="mt-3">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Название</th>
+                <th>Жанр</th>
+                <th>Дата возврата</th>
+              </tr>
+            </thead>
+            <tbody>
+              {booksReturned.map((book, index) => {
+                const { bookId, bookCharacteristics, timeReturned } = book || {};
+                const title = bookCharacteristics?.title || "Неизвестное название";
+                const genre = bookCharacteristics?.genre || "Неизвестный жанр";
+
+                return (
+                  <tr key={bookId}>
+                    <td>{index + 1}</td>
+                    <td>{title}</td>
+                    <td>{genre}</td>
+                    <td>{new Date(timeReturned).toLocaleDateString()}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </Table>
+        </div>
+      )}
+
+      {booksNotReturned.length === 0 && booksReturned.length === 0 && (
         <div className="mt-3">У вас нет взятых книг.</div>
       )}
     </Container>
