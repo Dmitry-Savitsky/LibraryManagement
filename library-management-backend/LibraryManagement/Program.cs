@@ -35,6 +35,7 @@ builder.Services.AddScoped<IAuthorRepository, AuthorRepository>();
 builder.Services.AddScoped<AuthorService>();
 builder.Services.AddScoped<BookCharacteristicsService>();
 builder.Services.AddScoped<BookHasUserService>();
+builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<IBookCharacteristicsRepository, BookCharacteristicsRepository>();
 builder.Services.AddScoped<IBookHasUserRepository, BookHasUserRepository>();
 
