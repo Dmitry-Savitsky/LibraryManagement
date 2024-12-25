@@ -20,7 +20,7 @@ namespace LibraryManagement.Infrastructure.Persistence
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<BookHasUser>()
-                .HasKey(bhu => new { bhu.BookId, bhu.UserId });
+                .HasKey(bhu => new { bhu.BookId, bhu.UserId, bhu.TimeBorrowed });
 
             modelBuilder.Entity<BookHasUser>()
                 .HasOne(bhu => bhu.Book)

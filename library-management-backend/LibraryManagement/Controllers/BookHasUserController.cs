@@ -1,7 +1,7 @@
-﻿using LibraryManagement.Core.Interfaces;
-using LibraryManagement.Application.DTOs;
+﻿using LibraryManagement.Application.DTOs;
+using LibraryManagement.Application.Services;
 using Microsoft.AspNetCore.Mvc;
-using LibraryManagement.Core.Entities;
+using System.Threading.Tasks;
 
 namespace LibraryManagement.Presentation.Controllers
 {
@@ -9,109 +9,44 @@ namespace LibraryManagement.Presentation.Controllers
     [Route("api/[controller]")]
     public class BookHasUserController : ControllerBase
     {
-        private readonly IUnitOfWork _unitOfWork;
-        private readonly IBookHasUserRepository _bookHasUserRepository;
+        private readonly BookHasUserService _bookHasUserService;
 
-        public BookHasUserController(IUnitOfWork unitOfWork, IBookHasUserRepository bookHasUserRepository)
+        public BookHasUserController(BookHasUserService bookHasUserService)
         {
-            _unitOfWork = unitOfWork;
-            _bookHasUserRepository = bookHasUserRepository;
+            _bookHasUserService = bookHasUserService;
         }
 
         [HttpPost("reserve")]
-        public async Task<IActionResult> ReserveBook(ReserveBookDto reserveBookDto)
+        public async Task<IActionResult> ReserveBook([FromBody] ReserveBookDto reserveBookDto)
         {
-            var bookCharacteristics = await _unitOfWork.BookCharacteristics.GetByIdAsync(reserveBookDto.BookCharacteristicsId);
+            var result = await _bookHasUserService.ReserveBookAsync(reserveBookDto);
 
-            if (bookCharacteristics == null)
-                return NotFound("Book characteristics not found.");
+            if (result == "Book characteristics not found." || result == "No available copies of the book." || result == "No available copies of this book.")
+                return BadRequest(result);
 
-            if (bookCharacteristics.BookCount <= 0)
-                return BadRequest("No available copies of the book.");
-
-            var availableBooks = await _bookHasUserRepository.GetAvailableBooksByCharacteristicsIdAsync(reserveBookDto.BookCharacteristicsId);
-
-            if (!availableBooks.Any())
-                return BadRequest("No available copies of this book.");
-
-            var bookToReserve = availableBooks.First();
-
-            var bookHasUser = new BookHasUser
-            {
-                BookId = bookToReserve.Id,
-                UserId = reserveBookDto.UserId,
-                TimeBorrowed = DateTime.UtcNow,
-                TimeReturned = null
-            };
-
-            await _unitOfWork.BooksHasUsers.AddAsync(bookHasUser);
-
-            bookCharacteristics.BookCount--;
-
-            _unitOfWork.BookCharacteristics.Update(bookCharacteristics);
-
-            await _unitOfWork.SaveChangesAsync();
-            return Ok(new
-            {
-                Message = "Book reserved successfully.",
-                BookId = bookToReserve.Id,
-                UserId = reserveBookDto.UserId,
-                TimeBorrowed = bookHasUser.TimeBorrowed
-            });
+            return Ok(result);
         }
 
         [HttpPost("return")]
-        public async Task<IActionResult> ReturnBook(ReturnBookDto returnBookDto)
+        public async Task<IActionResult> ReturnBook([FromBody] ReturnBookDto returnBookDto)
         {
-            var bookHasUser = await _bookHasUserRepository
-                .GetByConditionAsync(b => b.BookId == returnBookDto.BookId && b.UserId == returnBookDto.UserId);
+            var result = await _bookHasUserService.ReturnBookAsync(returnBookDto);
 
-            if (!bookHasUser.Any())
-                return NotFound("No record found for this book and user.");
+            if (result == "No record found for this book and user." || result == "Book not found." || result == "Book characteristics not found.")
+                return NotFound(result);
 
-            var book = await _unitOfWork.Books.GetByIdAsync(returnBookDto.BookId);
-
-            if (book == null)
-                return NotFound("Book not found.");
-
-            var bookCharacteristics = await _unitOfWork.BookCharacteristics
-                .GetByIdAsync(book.BookCharacteristicsId);
-
-            if (bookCharacteristics == null)
-                return NotFound("Book characteristics not found.");
-
-            var recordToUpdate = bookHasUser.First();
-            recordToUpdate.TimeReturned = DateTime.UtcNow;
-
-            _unitOfWork.BooksHasUsers.Update(recordToUpdate);
-
-            bookCharacteristics.BookCount += 1;
-
-            _unitOfWork.BookCharacteristics.Update(bookCharacteristics);
-
-            await _unitOfWork.SaveChangesAsync();
-
-            return Ok(new
-            {
-                Message = "Book returned successfully.",
-                BookId = returnBookDto.BookId,
-                UserId = returnBookDto.UserId,
-                TimeReturned = recordToUpdate.TimeReturned
-            });
+            return Ok(result);
         }
 
         [HttpGet("user/{userId}")]
         public async Task<IActionResult> GetUserBooks(int userId)
         {
-            var userBooks = await _bookHasUserRepository.GetUserBooksAsync(userId);
+            var userBooks = await _bookHasUserService.GetUserBooksAsync(userId);
 
-            if (!userBooks.Any())
+            if (userBooks == null || !userBooks.Any())
                 return NotFound("No books found for this user.");
 
             return Ok(userBooks);
         }
-
-
-
     }
 }
