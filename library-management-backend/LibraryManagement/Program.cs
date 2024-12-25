@@ -32,6 +32,8 @@ builder.Services.AddDbContext<LibraryDbContext>(options =>
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IAuthorRepository, AuthorRepository>();
+builder.Services.AddScoped<AuthorService>();
+builder.Services.AddScoped<BookCharacteristicsService>();
 builder.Services.AddScoped<IBookCharacteristicsRepository, BookCharacteristicsRepository>();
 builder.Services.AddScoped<IBookHasUserRepository, BookHasUserRepository>();
 
