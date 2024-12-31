@@ -17,11 +17,6 @@ namespace LibraryManagement.Infrastructure
     {
         private readonly LibraryDbContext _context;
 
-
-        //private AuthorRepository _authorRepository;
-        //public IAuthorRepository Authors => _authorRepository ??= new AuthorRepository(_context);
-
-
         public IRepository<Author> Authors { get; }
 
         public IRepository<BookCharacteristics> BookCharacteristics { get; }
@@ -32,14 +27,20 @@ namespace LibraryManagement.Infrastructure
 
         public IRepository<BookHasUser> BooksHasUsers { get; }
 
-        public UnitOfWork(LibraryDbContext context)
+        // кастомные репозитории
+        public IBookHasUserRepository BookHasUserRepository { get; }
+
+        public UnitOfWork(LibraryDbContext context, 
+                  IRepository<BookHasUser> booksHasUsers, 
+                  IBookHasUserRepository bookHasUserRepository)
         {
             _context = context;
             Authors = new Repository<Author>(context);
             BookCharacteristics = new Repository<BookCharacteristics>(context);
             Books = new Repository<Book>(context);
             Users = new Repository<User>(context);
-            BooksHasUsers = new Repository<BookHasUser>(context);
+            BooksHasUsers = booksHasUsers;
+            BookHasUserRepository = bookHasUserRepository;
         }
 
         public async Task<int> SaveChangesAsync()

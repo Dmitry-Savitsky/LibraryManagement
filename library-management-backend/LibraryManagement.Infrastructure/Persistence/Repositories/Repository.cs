@@ -10,10 +10,10 @@ namespace LibraryManagement.Infrastructure.Persistence.Repositories
 {
     public class Repository<T> : IRepository<T> where T : class
     {
-        private readonly DbContext _context;
+        private readonly LibraryDbContext _context;
         private readonly DbSet<T> _dbSet;
 
-        public Repository(DbContext context)
+        public Repository(LibraryDbContext context)
         {
             _context = context;
             _dbSet = context.Set<T>();

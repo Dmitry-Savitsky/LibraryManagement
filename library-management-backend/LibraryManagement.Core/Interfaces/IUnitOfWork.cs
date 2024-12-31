@@ -14,6 +14,9 @@ namespace LibraryManagement.Core.Interfaces
         IRepository<Book> Books { get; }
         IRepository<User> Users { get; }
         IRepository<BookHasUser> BooksHasUsers { get; }
+
+        IBookHasUserRepository BookHasUserRepository { get; }
+
         Task<int> SaveChangesAsync();
     }
 }

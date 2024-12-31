@@ -11,12 +11,10 @@ namespace LibraryManagement.Application.Services
     public class BookHasUserService
     {
         private readonly IUnitOfWork _unitOfWork;
-        private readonly IBookHasUserRepository _bookHasUserRepository;
 
-        public BookHasUserService(IUnitOfWork unitOfWork, IBookHasUserRepository bookHasUserRepository)
+        public BookHasUserService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
-            _bookHasUserRepository = bookHasUserRepository;
         }
 
         public async Task<string> ReserveBookAsync(ReserveBookDto reserveBookDto)
@@ -29,7 +27,7 @@ namespace LibraryManagement.Application.Services
             if (bookCharacteristics.BookCount <= 0)
                 return "No available copies of the book.";
 
-            var availableBooks = await _bookHasUserRepository.GetAvailableBooksByCharacteristicsIdAsync(reserveBookDto.BookCharacteristicsId);
+            var availableBooks = await _unitOfWork.BookHasUserRepository.GetAvailableBooksByCharacteristicsIdAsync(reserveBookDto.BookCharacteristicsId);
 
             if (!availableBooks.Any())
                 return "No available copies of this book.";
@@ -55,7 +53,7 @@ namespace LibraryManagement.Application.Services
 
         public async Task<string> ReturnBookAsync(ReturnBookDto returnBookDto)
         {
-            var bookHasUser = await _bookHasUserRepository
+            var bookHasUser = await _unitOfWork.BookHasUserRepository
                 .GetByConditionAsync(b => b.BookId == returnBookDto.BookId && b.UserId == returnBookDto.UserId);
 
             if (!bookHasUser.Any())
@@ -85,7 +83,7 @@ namespace LibraryManagement.Application.Services
 
         public async Task<IEnumerable<object>> GetUserBooksAsync(int userId)
         {
-            return await _bookHasUserRepository.GetUserBooksAsync(userId);
+            return await _unitOfWork.BookHasUserRepository.GetUserBooksAsync(userId);
         }
     }
 }

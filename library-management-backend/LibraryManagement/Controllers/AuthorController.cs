@@ -32,12 +32,12 @@ namespace LibraryManagement.Presentation.Controllers
             return Ok(author);
         }
 
-        [HttpGet("/country")]
-        public async Task<IActionResult> GetAuthorsByCountryAsync(string country)
-        {
-            var authors = await _authorService.GetAuthorsByCountryAsync(country);
-            return Ok(authors);
-        }
+        //[HttpGet("/country")]
+        //public async Task<IActionResult> GetAuthorsByCountryAsync(string country)
+        //{
+        //    var authors = await _authorService.GetAuthorsByCountryAsync(country);
+        //    return Ok(authors);
+        //}
 
         [HttpPost]
         public async Task<IActionResult> Add(AuthorDto authorDto)

@@ -27,10 +27,10 @@ namespace LibraryManagement.Application.Services
             return await _unitOfWork.Authors.GetByIdAsync(id);
         }
 
-        public async Task<IEnumerable<Author>> GetAuthorsByCountryAsync(string country)
-        {
-            return await _authorRepository.GetAuthorsByCountryAsync(country);
-        }
+        //public async Task<IEnumerable<Author>> GetAuthorsByCountryAsync(string country)
+        //{
+        //    return await _authorRepository.GetAuthorsByCountryAsync(country);
+        //}
 
         public async Task<Author> AddAuthorAsync(AuthorDto authorDto)
         {
