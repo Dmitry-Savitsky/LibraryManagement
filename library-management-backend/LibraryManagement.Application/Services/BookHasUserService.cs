@@ -54,7 +54,10 @@ namespace LibraryManagement.Application.Services
         public async Task<string> ReturnBookAsync(ReturnBookDto returnBookDto)
         {
             var bookHasUser = await _unitOfWork.BookHasUserRepository
-                .GetByConditionAsync(b => b.BookId == returnBookDto.BookId && b.UserId == returnBookDto.UserId);
+                .GetByConditionAsync(b => 
+                    b.BookId == returnBookDto.BookId && 
+                    b.UserId == returnBookDto.UserId && 
+                    b.TimeBorrowed == returnBookDto.TimeBorrowed);
 
             if (!bookHasUser.Any())
                 return "No record found for this book and user.";

@@ -16,12 +16,13 @@ export const reserveBook = async (bookCharacteristicsId, userId) => {
   }
 };
 
-export const returnBook = async (bookId, userId) => {
+export const returnBook = async (bookId, userId, timeBorrowed) => {
   try {
-    console.log("Returning book with ID:", bookId, "for user ID:", userId);
+    console.log("Returning book with ID:", bookId, "for user ID:", userId, "borrowed at:", timeBorrowed);
     const { data } = await $host.post("api/bookhasuser/return", {
       bookId,
       userId,
+      timeBorrowed,
     });
 
     console.log("Book returned successfully:", data);

@@ -34,13 +34,18 @@ const UserBooksPage = () => {
     fetchUserBooks();
   }, [user.id]);
 
-  const handleReturnBook = async (bookId) => {
+  const handleReturnBook = async (bookId, timeBorrowed) => {
     try {
       setSuccessMessage("");
       setErrorMessage("");
-      await returnBook(bookId, user.id);
+      await returnBook(bookId, user.id, timeBorrowed);
       setSuccessMessage("Книга успешно возвращена!");
-      setUserBooks((prevBooks) => prevBooks.filter((book) => book.bookId !== bookId));
+      setUserBooks((prevBooks) =>
+        prevBooks.filter(
+          (book) =>
+            book.bookId !== bookId || book.timeBorrowed !== timeBorrowed
+        )
+      );
     } catch (error) {
       console.error("Error returning book:", error);
       setErrorMessage("Ошибка при возврате книги. Попробуйте позже.");
@@ -93,10 +98,10 @@ const UserBooksPage = () => {
                     <td>
                       <Button
                         variant="danger"
-                        onClick={() => handleReturnBook(bookId)}
+                        onClick={() => handleReturnBook(bookId, timeBorrowed)}
                       >
                         Вернуть книгу
-                      </Button>
+                      </Button>;
                     </td>
                   </tr>
                 );
