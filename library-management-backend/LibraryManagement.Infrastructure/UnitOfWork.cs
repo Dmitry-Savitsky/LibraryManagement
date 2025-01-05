@@ -30,17 +30,47 @@ namespace LibraryManagement.Infrastructure
         // кастомные репозитории
         public IBookHasUserRepository BookHasUserRepository { get; }
 
-        public UnitOfWork(LibraryDbContext context, 
-                  IRepository<BookHasUser> booksHasUsers, 
-                  IBookHasUserRepository bookHasUserRepository)
+        public IBookRepository BookRepository { get; }
+
+        public IAuthorRepository AuthorRepository { get; }
+
+        public IBookCharacteristicsRepository BookCharacteristicsRepository { get; }
+
+        public IUserRepository UserRepository { get; }
+
+        public UnitOfWork(LibraryDbContext context,
+                  
+                  IRepository<Author> authors,
+                  IAuthorRepository authorRepository,
+
+                  IRepository<BookCharacteristics> bookCharacteristics,
+                  IBookCharacteristicsRepository bookCharacteristicsRepository,
+
+                  IRepository<BookHasUser> booksHasUsers,
+                  IBookHasUserRepository bookHasUserRepository,
+
+                  IRepository<Book> books,
+                  IBookRepository bookRepository,
+                                    
+                  IRepository<User> users,
+                  IUserRepository userRepository)
         {
             _context = context;
-            Authors = new Repository<Author>(context);
-            BookCharacteristics = new Repository<BookCharacteristics>(context);
-            Books = new Repository<Book>(context);
-            Users = new Repository<User>(context);
+            
+            Authors = authors;
+            AuthorRepository = authorRepository;
+
+            BookCharacteristics = bookCharacteristics;
+            BookCharacteristicsRepository = bookCharacteristicsRepository;
+
             BooksHasUsers = booksHasUsers;
             BookHasUserRepository = bookHasUserRepository;
+
+            Books = books;
+            BookRepository  = bookRepository;
+
+            Users = users;
+            UserRepository = userRepository;
         }
 
         public async Task<int> SaveChangesAsync()

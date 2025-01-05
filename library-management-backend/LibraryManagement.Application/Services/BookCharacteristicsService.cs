@@ -9,12 +9,10 @@ namespace LibraryManagement.Application.Services
     public class BookCharacteristicsService
     {
         private readonly IUnitOfWork _unitOfWork;
-        private readonly IBookCharacteristicsRepository _bookCharacteristicsRepository;
 
-        public BookCharacteristicsService(IUnitOfWork unitOfWork, IBookCharacteristicsRepository bookCharacteristicsRepository)
+        public BookCharacteristicsService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
-            _bookCharacteristicsRepository = bookCharacteristicsRepository;
         }
 
         public async Task<IEnumerable<BookCharacteristics>> GetAllAsync()
@@ -29,7 +27,7 @@ namespace LibraryManagement.Application.Services
 
         public async Task<IEnumerable<BookCharacteristics>> GetBooksByAuthorIdAsync(int authorId)
         {
-            return await _bookCharacteristicsRepository.GetBooksByAuthorIdAsync(authorId);
+            return await _unitOfWork.BookCharacteristicsRepository.GetBooksByAuthorIdAsync(authorId);
         }
 
         public async Task<BookCharacteristics> AddAsync(BookCharacteristicsDto dto, string imagePath)

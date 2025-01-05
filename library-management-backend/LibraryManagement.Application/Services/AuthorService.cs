@@ -9,12 +9,10 @@ namespace LibraryManagement.Application.Services
     public class AuthorService
     {
         private readonly IUnitOfWork _unitOfWork;
-        private readonly IAuthorRepository _authorRepository;
 
-        public AuthorService(IUnitOfWork unitOfWork, IAuthorRepository authorRepository)
+        public AuthorService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
-            _authorRepository = authorRepository;
         }
 
         public async Task<IEnumerable<Author>> GetAllAuthorsAsync()

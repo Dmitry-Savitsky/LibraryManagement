@@ -10,19 +10,17 @@ namespace LibraryManagement.Application.Services
     public class UserService
     {
         private readonly IUnitOfWork _unitOfWork;
-        private readonly IUserRepository _userRepository;
         private readonly IConfiguration _configuration;
 
-        public UserService(IUnitOfWork unitOfWork, IUserRepository userRepository, IConfiguration configuration)
+        public UserService(IUnitOfWork unitOfWork, IConfiguration configuration)
         {
             _unitOfWork = unitOfWork;
-            _userRepository = userRepository;
             _configuration = configuration;
         }
 
         public async Task<AuthResult> RegisterUserAsync(RegisterDto registerDto)
         {
-            var existingUser = await _userRepository.GetUserByEmailAsync(registerDto.Email);
+            var existingUser = await _unitOfWork.UserRepository.GetUserByEmailAsync(registerDto.Email);
             if (existingUser != null)
                 return AuthResult.Failure("User with this email already exists.");
 
@@ -46,7 +44,7 @@ namespace LibraryManagement.Application.Services
 
         public async Task<AuthResult> AuthenticateUserAsync(LoginDto loginDto)
         {
-            var user = await _userRepository.GetUserByEmailAsync(loginDto.Email);
+            var user = await _unitOfWork.UserRepository.GetUserByEmailAsync(loginDto.Email);
             if (user == null || !BCrypt.Net.BCrypt.Verify(loginDto.Password, user.Password))
                 return AuthResult.Failure("Invalid email or password.");
 
