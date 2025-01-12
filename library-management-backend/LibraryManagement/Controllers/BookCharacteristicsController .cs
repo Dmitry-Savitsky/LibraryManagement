@@ -1,8 +1,10 @@
-﻿using LibraryManagement.Core.Entities;
-using LibraryManagement.Core.Interfaces;
-using LibraryManagement.Application.DTOs;
+﻿using LibraryManagement.Application.DTOs;
+using LibraryManagement.Application.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Hosting;
+using System.IO;
+using System.Threading.Tasks;
+using System;
 
 namespace LibraryManagement.Presentation.Controllers
 {
@@ -10,84 +12,65 @@ namespace LibraryManagement.Presentation.Controllers
     [Route("api/[controller]")]
     public class BookCharacteristicsController : ControllerBase
     {
-        private readonly IUnitOfWork _unitOfWork;
-        private readonly IBookCharacteristicsRepository _bookCharacteristicsRepository;
+        private readonly BookCharacteristicsService _bookCharacteristicsService;
         private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public BookCharacteristicsController(IUnitOfWork unitOfWork, IBookCharacteristicsRepository bookCharacteristicsRepository, IWebHostEnvironment webHostEnvironment)
+        public BookCharacteristicsController(BookCharacteristicsService bookCharacteristicsService, IWebHostEnvironment webHostEnvironment)
         {
-            _unitOfWork = unitOfWork;
-            _bookCharacteristicsRepository = bookCharacteristicsRepository;
+            _bookCharacteristicsService = bookCharacteristicsService;
             _webHostEnvironment = webHostEnvironment;
         }
-
-
 
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var bookCharacteristics = await _unitOfWork.BookCharacteristics.GetAllAsync();
+            var bookCharacteristics = await _bookCharacteristicsService.GetAllAsync();
             return Ok(bookCharacteristics);
         }
-
-
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
-            var bookCharacteristic = await _unitOfWork.BookCharacteristics.GetByIdAsync(id);
+            var bookCharacteristic = await _bookCharacteristicsService.GetByIdAsync(id);
             if (bookCharacteristic == null)
                 return NotFound($"BookCharacteristics with ID {id} not found.");
-
             return Ok(bookCharacteristic);
         }
 
         [HttpGet("author/{authorId}")]
         public async Task<IActionResult> GetBooksByAuthorId(int authorId)
         {
-            var books = await _bookCharacteristicsRepository.GetBooksByAuthorIdAsync(authorId);
-
-            if (!books.Any())
-            {
+            var books = await _bookCharacteristicsService.GetBooksByAuthorIdAsync(authorId);
+            if (books == null)
                 return NotFound($"No books found for author with ID {authorId}.");
-            }
-
             return Ok(books);
         }
 
-
         [HttpPost]
-        public async Task<IActionResult> Add(BookCharacteristicsDto dto)
+        public async Task<IActionResult> Add([FromForm] BookCharacteristicsDto dto)
         {
-            var bookCharacteristic = new BookCharacteristics
-            {
-                ISBN = dto.ISBN,
-                Title = dto.Title,
-                Genre = dto.Genre,
-                Description = dto.Description,
-                AuthorId = dto.AuthorId,
-                CheckoutPeriod = dto.CheckoutPeriod,
-                BookCount = dto.BookCount
-            };
-
             var imagePath = await SaveImageAsync(dto.Image);
-            bookCharacteristic.ImgPath = imagePath;
-
-            await _unitOfWork.BookCharacteristics.AddAsync(bookCharacteristic);
-            await _unitOfWork.SaveChangesAsync();
-
-            for (int i = 0; i < dto.BookCount; i++)
-            {
-                var book = new Book
-                {
-                    BookCharacteristicsId = bookCharacteristic.Id
-                };
-                await _unitOfWork.Books.AddAsync(book);
-            }
-
-            await _unitOfWork.SaveChangesAsync();
-
+            var bookCharacteristic = await _bookCharacteristicsService.AddAsync(dto, imagePath);
             return CreatedAtAction(nameof(GetById), new { id = bookCharacteristic.Id }, bookCharacteristic);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(int id, [FromForm] BookCharacteristicsDto dto)
+        {
+            var imagePath = dto.Image != null ? await SaveImageAsync(dto.Image) : null;
+            var isUpdated = await _bookCharacteristicsService.UpdateAsync(id, dto, imagePath);
+            if (!isUpdated)
+                return NotFound($"BookCharacteristics with ID {id} not found.");
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var isDeleted = await _bookCharacteristicsService.DeleteAsync(id);
+            if (!isDeleted)
+                return NotFound($"BookCharacteristics with ID {id} not found.");
+            return NoContent();
         }
 
         private async Task<string> SaveImageAsync(IFormFile image)
@@ -104,47 +87,6 @@ namespace LibraryManagement.Presentation.Controllers
             }
 
             return "/images/" + uniqueFileName;
-        }
-
-        [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, BookCharacteristicsDto dto)
-        {
-            var bookCharacteristic = await _unitOfWork.BookCharacteristics.GetByIdAsync(id);
-            if (bookCharacteristic == null)
-                return NotFound($"BookCharacteristics with ID {id} not found.");
-
-            bookCharacteristic.ISBN = dto.ISBN;
-            bookCharacteristic.Title = dto.Title;
-            bookCharacteristic.Genre = dto.Genre;
-            bookCharacteristic.Description = dto.Description;
-            bookCharacteristic.AuthorId = dto.AuthorId;
-            bookCharacteristic.CheckoutPeriod = dto.CheckoutPeriod;
-            bookCharacteristic.BookCount = dto.BookCount;
-            bookCharacteristic.ImgPath = bookCharacteristic.ImgPath;
-
-            if (dto.Image != null && dto.Image.Length > 0)
-            {
-                var imagePath = await SaveImageAsync(dto.Image);
-                bookCharacteristic.ImgPath = imagePath;
-            }
-
-            _unitOfWork.BookCharacteristics.Update(bookCharacteristic);
-            await _unitOfWork.SaveChangesAsync();
-
-            return NoContent();
-        }
-
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
-        {
-            var bookCharacteristic = await _unitOfWork.BookCharacteristics.GetByIdAsync(id);
-            if (bookCharacteristic == null)
-                return NotFound($"BookCharacteristics with ID {id} not found.");
-
-            _unitOfWork.BookCharacteristics.Delete(bookCharacteristic);
-            await _unitOfWork.SaveChangesAsync();
-
-            return NoContent();
         }
     }
 }

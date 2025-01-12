@@ -5,6 +5,6 @@ namespace LibraryManagement.Core.Interfaces
 {
     public interface IBookRepository : IRepository<Book>
     {
-        Task<Book> GetByIsbnAsync(int isbn);
+        Task<IEnumerable<Book>> GetBookIdByBookCharacteristic(int id);
     }
 }

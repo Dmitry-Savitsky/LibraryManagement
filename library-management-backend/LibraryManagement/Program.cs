@@ -25,15 +25,17 @@ builder.Services.AddDbContext<LibraryDbContext>(options =>
                      ServerVersion.AutoDetect(connectionString),
                      b => b.MigrationsAssembly("LibraryManagement.Infrastructure")));
 
-//builder.Services.AddScoped<IUserRepository, UserRepository>();
-//builder.Services.AddScoped<IBookRepository, BookRepository>();
-
-//builder.Services.AddScoped<BookCharacteristics, BookCharacteristicsRep>();
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IAuthorRepository, AuthorRepository>();
 builder.Services.AddScoped<IBookCharacteristicsRepository, BookCharacteristicsRepository>();
 builder.Services.AddScoped<IBookHasUserRepository, BookHasUserRepository>();
+builder.Services.AddScoped<IBookRepository, BookRepository>();
+
+builder.Services.AddScoped<AuthorService>();
+builder.Services.AddScoped<BookCharacteristicsService>();
+builder.Services.AddScoped<BookHasUserService>();
+builder.Services.AddScoped<UserService>();
 
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();

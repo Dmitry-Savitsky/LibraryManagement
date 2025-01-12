@@ -17,11 +17,6 @@ namespace LibraryManagement.Infrastructure
     {
         private readonly LibraryDbContext _context;
 
-
-        //private AuthorRepository _authorRepository;
-        //public IAuthorRepository Authors => _authorRepository ??= new AuthorRepository(_context);
-
-
         public IRepository<Author> Authors { get; }
 
         public IRepository<BookCharacteristics> BookCharacteristics { get; }
@@ -32,14 +27,50 @@ namespace LibraryManagement.Infrastructure
 
         public IRepository<BookHasUser> BooksHasUsers { get; }
 
-        public UnitOfWork(LibraryDbContext context)
+        // кастомные репозитории
+        public IBookHasUserRepository BookHasUserRepository { get; }
+
+        public IBookRepository BookRepository { get; }
+
+        public IAuthorRepository AuthorRepository { get; }
+
+        public IBookCharacteristicsRepository BookCharacteristicsRepository { get; }
+
+        public IUserRepository UserRepository { get; }
+
+        public UnitOfWork(LibraryDbContext context,
+                  
+                  IRepository<Author> authors,
+                  IAuthorRepository authorRepository,
+
+                  IRepository<BookCharacteristics> bookCharacteristics,
+                  IBookCharacteristicsRepository bookCharacteristicsRepository,
+
+                  IRepository<BookHasUser> booksHasUsers,
+                  IBookHasUserRepository bookHasUserRepository,
+
+                  IRepository<Book> books,
+                  IBookRepository bookRepository,
+                                    
+                  IRepository<User> users,
+                  IUserRepository userRepository)
         {
             _context = context;
-            Authors = new Repository<Author>(context);
-            BookCharacteristics = new Repository<BookCharacteristics>(context);
-            Books = new Repository<Book>(context);
-            Users = new Repository<User>(context);
-            BooksHasUsers = new Repository<BookHasUser>(context);
+            
+            Authors = authors;
+            AuthorRepository = authorRepository;
+
+            BookCharacteristics = bookCharacteristics;
+            BookCharacteristicsRepository = bookCharacteristicsRepository;
+
+            BooksHasUsers = booksHasUsers;
+            BookHasUserRepository = bookHasUserRepository;
+
+            Books = books;
+            BookRepository  = bookRepository;
+
+            Users = users;
+            UserRepository = userRepository;
         }
 
         public async Task<int> SaveChangesAsync()

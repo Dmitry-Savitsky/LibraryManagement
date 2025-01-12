@@ -14,6 +14,14 @@ namespace LibraryManagement.Core.Interfaces
         IRepository<Book> Books { get; }
         IRepository<User> Users { get; }
         IRepository<BookHasUser> BooksHasUsers { get; }
+
+        //кастомные репозитории
+        IAuthorRepository AuthorRepository { get; }
+        IBookCharacteristicsRepository BookCharacteristicsRepository { get; }
+        IBookHasUserRepository BookHasUserRepository { get; }
+        IBookRepository BookRepository { get; }
+        IUserRepository UserRepository { get; }
+
         Task<int> SaveChangesAsync();
     }
 }
