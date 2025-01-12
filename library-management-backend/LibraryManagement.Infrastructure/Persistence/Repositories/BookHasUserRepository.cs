@@ -19,10 +19,12 @@ namespace LibraryManagement.Infrastructure.Repositories
         public async Task<IEnumerable<Book>> GetAvailableBooksByCharacteristicsIdAsync(int bookCharacteristicsId)
         {
             var books = await _dbContext.Books
+                .AsNoTracking()
                 .Where(b => b.BookCharacteristicsId == bookCharacteristicsId)
                 .ToListAsync();
 
             var reservedBookIds = await _dbContext.BookHasUsers
+                .AsNoTracking()
                 .Where(bhu => bhu.TimeReturned == null)
                 .Select(bhu => bhu.BookId)
                 .ToListAsync();
@@ -32,12 +34,13 @@ namespace LibraryManagement.Infrastructure.Repositories
 
         public async Task<IEnumerable<BookHasUser>> GetByConditionAsync(Expression<Func<BookHasUser, bool>> predicate)
         {
-            return await _dbContext.BookHasUsers.Where(predicate).ToListAsync();
+            return await _dbContext.BookHasUsers.AsNoTracking().Where(predicate).ToListAsync();
         }
 
         public async Task<IEnumerable<object>> GetUserBooksAsync(int userId)
         {
             return await _dbContext.BookHasUsers
+                .AsNoTracking()
                 .Where(bhu => bhu.UserId == userId)
                 .Select(bhu => new
                 {
@@ -49,7 +52,5 @@ namespace LibraryManagement.Infrastructure.Repositories
                 .Distinct()
                 .ToListAsync();
         }
-
-
     }
 }

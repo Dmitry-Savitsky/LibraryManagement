@@ -21,6 +21,7 @@ namespace LibraryManagement.Infrastructure.Repositories
         public async Task<IEnumerable<Author>> GetAuthorsByCountryAsync(string country)
         {
             return await _dbContext.Authors
+                .AsNoTracking()
                 .Where(a => a.Country == country)
                 .ToListAsync();
         }

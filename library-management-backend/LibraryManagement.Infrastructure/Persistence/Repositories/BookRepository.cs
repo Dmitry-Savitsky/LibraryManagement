@@ -21,6 +21,7 @@ namespace LibraryManagement.Infrastructure.Repositories
         public async Task<IEnumerable<Book>> GetBookIdByBookCharacteristic(int id)
         {
             return await _dbContext.Books
+                .AsNoTracking()
                 .Where(b => b.BookCharacteristicsId == id)
                 .ToListAsync();
         }
