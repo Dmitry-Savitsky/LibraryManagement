@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using LibraryManagement.Core.Entities;
-using System.Collections.Generic;
 
 namespace LibraryManagement.Infrastructure.Persistence
 {
@@ -19,6 +18,13 @@ namespace LibraryManagement.Infrastructure.Persistence
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            ConfigureBookHasUser(modelBuilder);
+            ConfigureBook(modelBuilder);
+            ConfigureBookCharacteristics(modelBuilder);
+        }
+
+        private void ConfigureBookHasUser(ModelBuilder modelBuilder)
+        {
             modelBuilder.Entity<BookHasUser>()
                 .HasKey(bhu => new { bhu.BookId, bhu.UserId, bhu.TimeBorrowed });
 
@@ -31,12 +37,18 @@ namespace LibraryManagement.Infrastructure.Persistence
                 .HasOne(bhu => bhu.User)
                 .WithMany(u => u.BorrowedBooks)
                 .HasForeignKey(bhu => bhu.UserId);
+        }
 
+        private void ConfigureBook(ModelBuilder modelBuilder)
+        {
             modelBuilder.Entity<Book>()
                 .HasOne(b => b.BookCharacteristics)
                 .WithMany()
                 .HasForeignKey(b => b.BookCharacteristicsId);
+        }
 
+        private void ConfigureBookCharacteristics(ModelBuilder modelBuilder)
+        {
             modelBuilder.Entity<BookCharacteristics>()
                 .HasOne(bc => bc.Author)
                 .WithMany(a => a.Books)
