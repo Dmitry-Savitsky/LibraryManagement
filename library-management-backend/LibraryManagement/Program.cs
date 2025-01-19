@@ -9,6 +9,7 @@ using LibraryManagement.Core.Entities;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using LibraryManagement.Presentation.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -74,6 +75,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 //настроить authorize для контроллеров
 app.UseHttpsRedirection();

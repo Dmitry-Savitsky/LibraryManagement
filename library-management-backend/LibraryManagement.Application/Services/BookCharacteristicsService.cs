@@ -1,5 +1,6 @@
 ﻿using LibraryManagement.Application.DTOs;
 using LibraryManagement.Core.Entities;
+using LibraryManagement.Core.Exceptions;
 using LibraryManagement.Core.Interfaces;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -22,7 +23,11 @@ namespace LibraryManagement.Application.Services
 
         public async Task<BookCharacteristics> GetByIdAsync(int id)
         {
-            return await _unitOfWork.BookCharacteristics.GetByIdAsync(id);
+            var bookCharacteristics = await _unitOfWork.BookCharacteristics.GetByIdAsync(id);
+            if (bookCharacteristics == null)
+                throw new NotFoundException($"Book characteristics with ID {id} not found.");
+
+            return bookCharacteristics;
         }
 
         public async Task<IEnumerable<BookCharacteristics>> GetBooksByAuthorIdAsync(int authorId)
@@ -32,6 +37,12 @@ namespace LibraryManagement.Application.Services
 
         public async Task<BookCharacteristics> AddAsync(BookCharacteristicsDto dto, string imagePath)
         {
+            // добавить GetByConditionAsync
+
+            //var existingBook = await _unitOfWork.BookCharacteristics.GetByConditionAsync(b => b.ISBN == dto.ISBN);
+            //if (existingBook != null)
+            //    throw new AlreadyExistsException("Book with the same ISBN already exists.");
+
             var bookCharacteristic = new BookCharacteristics
             {
                 ISBN = dto.ISBN,
@@ -60,7 +71,7 @@ namespace LibraryManagement.Application.Services
         {
             var bookCharacteristic = await _unitOfWork.BookCharacteristics.GetByIdAsync(id);
             if (bookCharacteristic == null)
-                return false;
+                throw new NotFoundException($"Book characteristics with ID {id} not found.");
 
             bookCharacteristic.ISBN = dto.ISBN;
             bookCharacteristic.Title = dto.Title;
@@ -83,7 +94,7 @@ namespace LibraryManagement.Application.Services
         {
             var bookCharacteristic = await _unitOfWork.BookCharacteristics.GetByIdAsync(id);
             if (bookCharacteristic == null)
-                return false;
+                throw new NotFoundException($"Book characteristics with ID {id} not found.");
 
             _unitOfWork.BookCharacteristics.Delete(bookCharacteristic);
             await _unitOfWork.SaveChangesAsync();

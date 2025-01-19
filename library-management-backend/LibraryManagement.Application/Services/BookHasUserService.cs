@@ -1,5 +1,6 @@
 ﻿using LibraryManagement.Application.DTOs;
 using LibraryManagement.Core.Entities;
+using LibraryManagement.Core.Exceptions;
 using LibraryManagement.Core.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -22,15 +23,15 @@ namespace LibraryManagement.Application.Services
             var bookCharacteristics = await _unitOfWork.BookCharacteristics.GetByIdAsync(reserveBookDto.BookCharacteristicsId);
 
             if (bookCharacteristics == null)
-                return "Book characteristics not found.";
+                throw new NotFoundException("Book characteristics not found.");
 
             if (bookCharacteristics.BookCount <= 0)
-                return "No available copies of the book.";
+                throw new BadRequestException("No available copies of the book.");
 
             var availableBooks = await _unitOfWork.BookHasUserRepository.GetAvailableBooksByCharacteristicsIdAsync(reserveBookDto.BookCharacteristicsId);
 
             if (!availableBooks.Any())
-                return "No available copies of this book.";
+                throw new BadRequestException("No available copies of this book.");
 
             var bookToReserve = availableBooks.First();
 
@@ -54,22 +55,22 @@ namespace LibraryManagement.Application.Services
         public async Task<string> ReturnBookAsync(ReturnBookDto returnBookDto)
         {
             var bookHasUser = await _unitOfWork.BookHasUserRepository
-                .GetByConditionAsync(b => 
-                    b.BookId == returnBookDto.BookId && 
-                    b.UserId == returnBookDto.UserId && 
+                .GetByConditionAsync(b =>
+                    b.BookId == returnBookDto.BookId &&
+                    b.UserId == returnBookDto.UserId &&
                     b.TimeBorrowed == returnBookDto.TimeBorrowed);
 
             if (!bookHasUser.Any())
-                return "No record found for this book and user.";
+                throw new NotFoundException("No record found for this book and user.");
 
             var book = await _unitOfWork.Books.GetByIdAsync(returnBookDto.BookId);
             if (book == null)
-                return "Book not found.";
+                throw new NotFoundException("Book not found.");
 
             var bookCharacteristics = await _unitOfWork.BookCharacteristics
                 .GetByIdAsync(book.BookCharacteristicsId);
             if (bookCharacteristics == null)
-                return "Book characteristics not found.";
+                throw new NotFoundException("Book characteristics not found.");
 
             var recordToUpdate = bookHasUser.First();
             recordToUpdate.TimeReturned = DateTime.UtcNow;

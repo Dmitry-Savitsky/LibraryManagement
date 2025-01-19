@@ -1,6 +1,7 @@
 ﻿using LibraryManagement.Application.DTOs;
 using LibraryManagement.Application.Helpers;
 using LibraryManagement.Core.Entities;
+using LibraryManagement.Core.Exceptions;
 using LibraryManagement.Core.Interfaces;
 using Microsoft.Extensions.Configuration;
 using System.Threading.Tasks;
@@ -22,7 +23,7 @@ namespace LibraryManagement.Application.Services
         {
             var existingUser = await _unitOfWork.UserRepository.GetUserByEmailAsync(registerDto.Email);
             if (existingUser != null)
-                return AuthResult.Failure("User with this email already exists.");
+                throw new AlreadyExistsException("User with this email already exists.");
 
             var passwordHash = BCrypt.Net.BCrypt.HashPassword(registerDto.Password);
 
@@ -46,7 +47,7 @@ namespace LibraryManagement.Application.Services
         {
             var user = await _unitOfWork.UserRepository.GetUserByEmailAsync(loginDto.Email);
             if (user == null || !BCrypt.Net.BCrypt.Verify(loginDto.Password, user.Password))
-                return AuthResult.Failure("Invalid email or password.");
+                throw new UnauthorizedException("Invalid email or password.");
 
             var token = JwtHelper.GenerateJwtToken(user, _configuration);
 
