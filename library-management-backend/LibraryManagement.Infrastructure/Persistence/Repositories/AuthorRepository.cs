@@ -3,8 +3,10 @@ using LibraryManagement.Core.Entities;
 using LibraryManagement.Infrastructure.Persistence.Repositories;
 using LibraryManagement.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace LibraryManagement.Infrastructure.Repositories
@@ -23,6 +25,14 @@ namespace LibraryManagement.Infrastructure.Repositories
             return await _dbContext.Authors
                 .AsNoTracking()
                 .Where(a => a.Country == country)
+                .ToListAsync();
+        }
+
+        public async Task<IEnumerable<Author>> GetByConditionAsync(Expression<Func<Author, bool>> predicate)
+        {
+            return await _dbContext.Authors
+                .AsNoTracking()
+                .Where(predicate)
                 .ToListAsync();
         }
     }

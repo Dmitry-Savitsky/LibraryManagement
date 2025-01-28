@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using LibraryManagement.Presentation.Middleware;
+//using LibraryManagement.Application.Mapping;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,6 +27,7 @@ builder.Services.AddDbContext<LibraryDbContext>(options =>
                      ServerVersion.AutoDetect(connectionString),
                      b => b.MigrationsAssembly("LibraryManagement.Infrastructure")));
 
+builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IAuthorRepository, AuthorRepository>();

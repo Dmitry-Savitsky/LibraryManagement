@@ -7,5 +7,7 @@ namespace LibraryManagement.Core.Interfaces
 
         Task<IEnumerable<BookCharacteristics>> GetBooksByAuthorIdAsync(int authorId);
 
+        Task<IEnumerable<BookCharacteristics>> GetByConditionAsync(Func<BookCharacteristics, bool> predicate);
+
     }
 }

@@ -32,11 +32,9 @@ namespace LibraryManagement.Application.Services
 
         public async Task<Author> AddAuthorAsync(AuthorDto authorDto)
         {
-            // добавить GetByConditionAsync
-
-            //var existingAuthor = await _unitOfWork.Authors.GetByConditionAsync(a => a.Name == authorDto.Name && a.Surename == authorDto.Surename);
-            //if (existingAuthor != null)
-            //    throw new AlreadyExistsException("Author with the same name and surname already exists.");
+            var existingAuthor = await _unitOfWork.Authors.GetByConditionAsync(a => a.Name == authorDto.Name && a.Surename == authorDto.Surename);
+            if (existingAuthor.Any())
+                throw new AlreadyExistsException("Author with the same name and surname already exists.");
 
             var author = new Author
             {

@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using System.Linq.Expressions;
 
 namespace LibraryManagement.Infrastructure.Repositories
 {
@@ -24,6 +25,14 @@ namespace LibraryManagement.Infrastructure.Repositories
             return await _dbContext.BookCharacteristics
                 .AsNoTracking()
                 .Where(bc => bc.AuthorId == authorId)
+                .ToListAsync();
+        }
+
+        public async Task<IEnumerable<BookCharacteristics>> GetByConditionAsync(Expression<Func<BookCharacteristics, bool>> predicate)
+        {
+            return await _dbContext.BookCharacteristics
+                .AsNoTracking()
+                .Where(predicate)
                 .ToListAsync();
         }
     }
