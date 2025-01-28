@@ -37,11 +37,10 @@ namespace LibraryManagement.Application.Services
 
         public async Task<BookCharacteristics> AddAsync(BookCharacteristicsDto dto, string imagePath)
         {
-            // добавить GetByConditionAsync
+            var existingBook = await _unitOfWork.BookCharacteristicsRepository.GetByConditionAsync(b => b.ISBN == dto.ISBN);
+            if (existingBook.Any())
+                throw new AlreadyExistsException("Book with the same ISBN already exists.");
 
-            //var existingBook = await _unitOfWork.BookCharacteristics.GetByConditionAsync(b => b.ISBN == dto.ISBN);
-            //if (existingBook != null)
-            //    throw new AlreadyExistsException("Book with the same ISBN already exists.");
 
             var bookCharacteristic = new BookCharacteristics
             {
