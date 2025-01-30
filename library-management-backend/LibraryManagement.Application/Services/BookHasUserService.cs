@@ -1,4 +1,5 @@
-﻿using LibraryManagement.Application.DTOs;
+﻿using AutoMapper;
+using LibraryManagement.Application.DTOs;
 using LibraryManagement.Core.Entities;
 using LibraryManagement.Core.Exceptions;
 using LibraryManagement.Core.Interfaces;
@@ -12,16 +13,17 @@ namespace LibraryManagement.Application.Services
     public class BookHasUserService
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IMapper _mapper;
 
-        public BookHasUserService(IUnitOfWork unitOfWork)
+        public BookHasUserService(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
+            _mapper = mapper;
         }
 
         public async Task<string> ReserveBookAsync(ReserveBookDto reserveBookDto)
         {
             var bookCharacteristics = await _unitOfWork.BookCharacteristics.GetByIdAsync(reserveBookDto.BookCharacteristicsId);
-
             if (bookCharacteristics == null)
                 throw new NotFoundException("Book characteristics not found.");
 
@@ -29,19 +31,14 @@ namespace LibraryManagement.Application.Services
                 throw new BadRequestException("No available copies of the book.");
 
             var availableBooks = await _unitOfWork.BookHasUserRepository.GetAvailableBooksByCharacteristicsIdAsync(reserveBookDto.BookCharacteristicsId);
-
             if (!availableBooks.Any())
                 throw new BadRequestException("No available copies of this book.");
 
             var bookToReserve = availableBooks.First();
-
-            var bookHasUser = new BookHasUser
-            {
-                BookId = bookToReserve.Id,
-                UserId = reserveBookDto.UserId,
-                TimeBorrowed = DateTime.UtcNow,
-                TimeReturned = null
-            };
+            var bookHasUser = _mapper.Map<BookHasUser>(reserveBookDto);
+            bookHasUser.BookId = bookToReserve.Id;
+            bookHasUser.TimeBorrowed = DateTime.UtcNow;
+            bookHasUser.TimeReturned = null;
 
             await _unitOfWork.BooksHasUsers.AddAsync(bookHasUser);
 
@@ -85,9 +82,10 @@ namespace LibraryManagement.Application.Services
             return "Book returned successfully.";
         }
 
-        public async Task<IEnumerable<object>> GetUserBooksAsync(int userId)
+        public async Task<IEnumerable<BookHasUserDto>> GetUserBooksAsync(int userId)
         {
-            return await _unitOfWork.BookHasUserRepository.GetUserBooksAsync(userId);
+            var userBooks = await _unitOfWork.BookHasUserRepository.GetUserBooksAsync(userId);
+            return _mapper.Map<IEnumerable<BookHasUserDto>>(userBooks);
         }
     }
 }

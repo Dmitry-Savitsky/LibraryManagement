@@ -1,4 +1,5 @@
-﻿using LibraryManagement.Application.DTOs;
+﻿using AutoMapper;
+using LibraryManagement.Application.DTOs;
 using LibraryManagement.Application.Helpers;
 using LibraryManagement.Core.Entities;
 using LibraryManagement.Core.Exceptions;
@@ -12,11 +13,13 @@ namespace LibraryManagement.Application.Services
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IConfiguration _configuration;
+        private readonly IMapper _mapper;
 
-        public UserService(IUnitOfWork unitOfWork, IConfiguration configuration)
+        public UserService(IUnitOfWork unitOfWork, IConfiguration configuration, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
             _configuration = configuration;
+            _mapper = mapper;
         }
 
         public async Task<AuthResult> RegisterUserAsync(RegisterDto registerDto)
@@ -25,15 +28,9 @@ namespace LibraryManagement.Application.Services
             if (existingUser != null)
                 throw new AlreadyExistsException("User with this email already exists.");
 
-            var passwordHash = BCrypt.Net.BCrypt.HashPassword(registerDto.Password);
-
-            var user = new User
-            {
-                Email = registerDto.Email,
-                Password = passwordHash,
-                Role = "User",
-                Name = registerDto.Name
-            };
+            var user = _mapper.Map<User>(registerDto);
+            user.Password = BCrypt.Net.BCrypt.HashPassword(registerDto.Password);
+            user.Role = "User";
 
             await _unitOfWork.Users.AddAsync(user);
             await _unitOfWork.SaveChangesAsync();

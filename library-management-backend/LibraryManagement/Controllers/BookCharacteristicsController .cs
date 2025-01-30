@@ -47,7 +47,7 @@ namespace LibraryManagement.Presentation.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add([FromForm] BookCharacteristicsDto dto)
+        public async Task<IActionResult> Add([FromForm] BookCharacteristicsCreateDto dto)
         {
             var imagePath = await SaveImageAsync(dto.Image);
             var bookCharacteristic = await _bookCharacteristicsService.AddAsync(dto, imagePath);
@@ -55,7 +55,7 @@ namespace LibraryManagement.Presentation.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, [FromForm] BookCharacteristicsDto dto)
+        public async Task<IActionResult> Update(int id, [FromForm] BookCharacteristicsCreateDto dto)
         {
             var imagePath = dto.Image != null ? await SaveImageAsync(dto.Image) : null;
             var isUpdated = await _bookCharacteristicsService.UpdateAsync(id, dto, imagePath);

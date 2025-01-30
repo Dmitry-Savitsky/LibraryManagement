@@ -6,23 +6,15 @@ public class MappingProfile : Profile
 {
     public MappingProfile()
     {
-        // Author mapping
         CreateMap<Author, AuthorDto>().ReverseMap();
-
-        // BookCharacteristics mapping
-        CreateMap<BookCharacteristics, BookCharacteristicsDto>()
-            .ForMember(dest => dest.Image, opt => opt.Ignore()); // Игнорируем IFormFile, так как это не сущность
-
-        CreateMap<BookCharacteristicsDto, BookCharacteristics>()
-            .ForMember(dest => dest.ImgPath, opt => opt.Ignore()); // ImagePath будет задаваться отдельно
-
-        // Book mapping
+        CreateMap<BookCharacteristics, BookCharacteristicsCreateDto>().ReverseMap();
+        CreateMap<BookCharacteristics, BookCharacteristicsResponseDto>().ReverseMap();
         CreateMap<Book, BookDto>().ReverseMap();
-
-        // BookHasUser mapping
         CreateMap<BookHasUser, BookHasUserDto>().ReverseMap();
-
-        // User mapping
         CreateMap<User, UserDto>().ReverseMap();
+        CreateMap<RegisterDto, User>()
+            .ForMember(dest => dest.Role, opt => opt.MapFrom(src => "User"))
+            .ForMember(dest => dest.Password, opt => opt.Ignore());
+        CreateMap<ReturnBookDto, BookHasUser>();
     }
 }
