@@ -35,5 +35,13 @@ namespace LibraryManagement.Infrastructure.Repositories
                 .Where(predicate)
                 .ToListAsync();
         }
+
+        public async Task<(IEnumerable<BookCharacteristics>, int)> GetPaginatedAsync(int pageNumber, int pageSize)
+        {
+            var query = _dbContext.BookCharacteristics.AsNoTracking();
+            int totalItems = await query.CountAsync();
+            var items = await query.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();
+            return (items, totalItems);
+        }
     }
 }

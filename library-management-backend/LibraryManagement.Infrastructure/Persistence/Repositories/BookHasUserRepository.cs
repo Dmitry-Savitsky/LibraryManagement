@@ -49,8 +49,9 @@ namespace LibraryManagement.Infrastructure.Repositories
                     TimeBorrowed = bhu.TimeBorrowed,
                     TimeReturned = bhu.TimeReturned
                 })
-                .Distinct()
-                .ToListAsync();
+                .Distinct().ToListAsync();
         }
+
+
     }
 }

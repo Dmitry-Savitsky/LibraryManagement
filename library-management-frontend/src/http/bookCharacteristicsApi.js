@@ -10,6 +10,19 @@ export const getAllBookCharacteristics = async () => {
   }
 };
 
+export const getPaginatedBookCharacteristics = async (pageNumber = 1, pageSize = 1) => {
+  try {
+    const { data } = await $host.get("api/BookCharacteristics/paginated", {
+      params: { pageNumber, pageSize },
+    });
+    return data;
+  } catch (error) {
+    console.error("Error fetching paginated books:", error);
+    throw error;
+  }
+};
+
+
 export const getBookCharacteristicById = async (id) => {
   try {
     const { data } = await $host.get(`api/bookcharacteristics/${id}`);

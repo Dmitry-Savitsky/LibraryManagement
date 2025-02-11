@@ -82,10 +82,10 @@ namespace LibraryManagement.Application.Services
             return "Book returned successfully.";
         }
 
-        public async Task<IEnumerable<BookHasUserDto>> GetUserBooksAsync(int userId)
+        public async Task<IEnumerable<object>> GetUserBooksAsync(int userId)
         {
-            var userBooks = await _unitOfWork.BookHasUserRepository.GetUserBooksAsync(userId);
-            return _mapper.Map<IEnumerable<BookHasUserDto>>(userBooks);
+            return await _unitOfWork.BookHasUserRepository.GetUserBooksAsync(userId);
         }
+
     }
 }

@@ -36,6 +36,12 @@ public class BookCharacteristicsService
         return _mapper.Map<IEnumerable<BookCharacteristicsResponseDto>>(books);
     }
 
+    public async Task<(IEnumerable<BookCharacteristicsResponseDto>, int)> GetPaginatedAsync(int pageNumber, int pageSize)
+    {
+        var (books, totalItems) = await _unitOfWork.BookCharacteristicsRepository.GetPaginatedAsync(pageNumber, pageSize);
+        return (_mapper.Map<IEnumerable<BookCharacteristicsResponseDto>>(books), totalItems);
+    }
+
     public async Task<BookCharacteristicsResponseDto> AddAsync(BookCharacteristicsCreateDto dto, string imagePath)
     {
         var existingBook = await _unitOfWork.BookCharacteristicsRepository.GetByConditionAsync(b => b.ISBN == dto.ISBN);

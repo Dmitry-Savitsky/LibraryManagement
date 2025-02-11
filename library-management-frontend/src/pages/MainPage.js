@@ -1,52 +1,31 @@
 import React, { useEffect, useState } from "react";
-import { Carousel, Card, Button, Container, Row, Col } from "react-bootstrap";
-import { getAllAuthors } from "../http/authorApi";
-import { getAllBookCharacteristics } from "../http/bookCharacteristicsApi";
+import { Row, Col, Card, Button } from "react-bootstrap";
+import { getPaginatedBookCharacteristics } from "../http/bookCharacteristicsApi";
 
 const MainPage = () => {
-  const [authors, setAuthors] = useState([]);
   const [books, setBooks] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [pageNumber, setPageNumber] = useState(1);
+  const pageSize = 6;
+  const [totalCount, setTotalCount] = useState(0);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchBooks = async () => {
       try {
-        const authorsData = await getAllAuthors();
-        const booksData = await getAllBookCharacteristics();
-        setAuthors(authorsData);
-        setBooks(booksData);
+        const data = await getPaginatedBookCharacteristics(pageNumber, pageSize);
+        setBooks(data.items);
+        setTotalCount(data.totalCount);
       } catch (error) {
-        console.error("Error fetching data:", error);
-      } finally {
-        setLoading(false);
+        console.error("Ошибка загрузки книг:", error);
       }
     };
-    fetchData();
-  }, []);
 
-  if (loading) {
-    return <div className="text-center mt-5">Loading...</div>;
-  }
+    fetchBooks();
+  }, [pageNumber]);
+
+  const totalPages = Math.ceil(totalCount / pageSize);
 
   return (
-    <Container className="mt-5">
-      <Carousel>
-        {books.map((book) => (
-          <Carousel.Item key={book.id}>
-            <img
-              className="d-block w-100"
-              src={process.env.REACT_APP_API_URL + book.imgPath}
-              alt={book.title}
-              style={{ height: "400px", objectFit: "cover" }}
-            />
-            <Carousel.Caption>
-              <h5>{book.title}</h5>
-              <p>{book.description.substring(0, 100)}...</p>
-            </Carousel.Caption>
-          </Carousel.Item>
-        ))}
-      </Carousel>
-
+    <div className="mx-5 px-3" >
       <h2 className="my-4">Популярное</h2>
       <Row>
         {books.map((book) => (
@@ -69,7 +48,29 @@ const MainPage = () => {
           </Col>
         ))}
       </Row>
-    </Container>
+
+      <div className="d-flex justify-content-center mt-4">
+        <Button
+          variant="primary"
+          disabled={pageNumber === 1}
+          onClick={() => setPageNumber(pageNumber - 1)}
+          className="me-2"
+        >
+          Назад
+        </Button>
+        <span className="align-self-center">
+          Страница {pageNumber} из {totalPages}
+        </span>
+        <Button
+          variant="primary"
+          disabled={pageNumber >= totalPages}
+          onClick={() => setPageNumber(pageNumber + 1)}
+          className="ms-2"
+        >
+          Вперед
+        </Button>
+      </div>
+    </div>
   );
 };
 

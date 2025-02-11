@@ -28,6 +28,22 @@ namespace LibraryManagement.Presentation.Controllers
             return Ok(bookCharacteristics);
         }
 
+        [HttpGet("paginated")]
+        public async Task<IActionResult> GetPaginated([FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 10)
+        {
+            var (books, totalItems) = await _bookCharacteristicsService.GetPaginatedAsync(pageNumber, pageSize);
+
+            var response = new
+            {
+                Items = books,
+                TotalCount = totalItems
+            };
+
+            return Ok(response);
+        }
+
+
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
