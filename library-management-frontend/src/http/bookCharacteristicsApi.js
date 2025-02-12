@@ -1,4 +1,4 @@
-import { $host } from "./index";
+import { $host, $authHost } from "./index";
 
 export const getAllBookCharacteristics = async () => {
   try {
@@ -25,7 +25,7 @@ export const getPaginatedBookCharacteristics = async (pageNumber = 1, pageSize =
 
 export const getBookCharacteristicById = async (id) => {
   try {
-    const { data } = await $host.get(`api/bookcharacteristics/${id}`);
+    const { data } = await $authHost.get(`api/bookcharacteristics/${id}`);
     return data;
   } catch (error) {
     console.error(`Error fetching book characteristic with ID ${id}:`, error);
@@ -35,7 +35,7 @@ export const getBookCharacteristicById = async (id) => {
 
 export const getBooksByAuthorId = async (authorId) => {
   try {
-    const { data } = await $host.get(`api/bookcharacteristics/author/${authorId}`);
+    const { data } = await $authHost.get(`api/bookcharacteristics/author/${authorId}`);
     return data;
   } catch (error) {
     console.error(`Error fetching books by author ID ${authorId}:`, error);
@@ -45,7 +45,7 @@ export const getBooksByAuthorId = async (authorId) => {
 
 export const addBookCharacteristic = async (bookData) => {
   try {
-    const { data } = await $host.post("api/bookcharacteristics", bookData, {
+    const { data } = await $authHost.post("api/bookcharacteristics", bookData, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
@@ -60,7 +60,7 @@ export const addBookCharacteristic = async (bookData) => {
 
 export const updateBookCharacteristic = async (id, updatedData) => {
   try {
-    await $host.put(`api/bookcharacteristics/${id}`, updatedData, {
+    await $authHost.put(`api/bookcharacteristics/${id}`, updatedData, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
@@ -75,7 +75,7 @@ export const updateBookCharacteristic = async (id, updatedData) => {
 
 export const deleteBookCharacteristic = async (id) => {
   try {
-    await $host.delete(`api/bookcharacteristics/${id}`);
+    await $authHost.delete(`api/bookcharacteristics/${id}`);
     return { message: "Book characteristic deleted successfully." };
   } catch (error) {
     console.error(`Error deleting book characteristic with ID ${id}:`, error);

@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Hosting;
 using System.IO;
 using System.Threading.Tasks;
 using System;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LibraryManagement.Presentation.Controllers
 {
@@ -42,8 +43,6 @@ namespace LibraryManagement.Presentation.Controllers
             return Ok(response);
         }
 
-
-
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
@@ -53,6 +52,7 @@ namespace LibraryManagement.Presentation.Controllers
             return Ok(bookCharacteristic);
         }
 
+        [Authorize(Policy = "UserPolicy")]
         [HttpGet("author/{authorId}")]
         public async Task<IActionResult> GetBooksByAuthorId(int authorId)
         {
@@ -62,6 +62,7 @@ namespace LibraryManagement.Presentation.Controllers
             return Ok(books);
         }
 
+        [Authorize(Policy = "AdminPolicy")]
         [HttpPost]
         public async Task<IActionResult> Add([FromForm] BookCharacteristicsCreateDto dto)
         {
@@ -70,6 +71,7 @@ namespace LibraryManagement.Presentation.Controllers
             return CreatedAtAction(nameof(GetById), new { id = bookCharacteristic.Id }, bookCharacteristic);
         }
 
+        [Authorize(Policy = "AdminPolicy")]
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, [FromForm] BookCharacteristicsCreateDto dto)
         {
@@ -80,6 +82,7 @@ namespace LibraryManagement.Presentation.Controllers
             return NoContent();
         }
 
+        [Authorize(Policy = "AdminPolicy")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {

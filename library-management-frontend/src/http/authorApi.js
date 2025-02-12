@@ -1,9 +1,9 @@
-import { $host } from "./index";
+import { $host, $authHost } from "./index";
 
 
 export const getAllAuthors = async () => {
     try {
-        const { data } = await $host.get("api/author");
+        const { data } = await $authHost.get("api/author");
         return data;
     } catch (error) {
         console.error("Error fetching all authors:", error);
@@ -14,7 +14,7 @@ export const getAllAuthors = async () => {
 
 export const getAuthorById = async (id) => {
     try {
-        const { data } = await $host.get(`api/author/${id}`);
+        const { data } = await $authHost.get(`api/author/${id}`);
         return data;
     } catch (error) {
         console.error(`Error fetching author by ID ${id}:`, error);
@@ -26,7 +26,7 @@ export const getAuthorById = async (id) => {
 
 export const getAuthorsByCountry = async (country) => {
     try {
-        const { data } = await $host.get(`api/author/country`, {
+        const { data } = await $authHost.get(`api/author/country`, {
             params: { country },
         });
         return data;
@@ -39,7 +39,7 @@ export const getAuthorsByCountry = async (country) => {
 
 export const addAuthor = async (authorData) => {
     try {
-        const { data } = await $host.post("api/author", authorData);
+        const { data } = await $authHost.post("api/author", authorData);
         return data;
     } catch (error) {
         console.error("Error adding new author:", error);
@@ -49,7 +49,7 @@ export const addAuthor = async (authorData) => {
 
 export const deleteAuthor = async (id) => {
     try {
-      await $host.delete(`api/author/${id}`);
+      await $authHost.delete(`api/author/${id}`);
       return { message: "Author deleted successfully." };
     } catch (error) {
       console.error(`Error deleting Author with ID ${id}:`, error);

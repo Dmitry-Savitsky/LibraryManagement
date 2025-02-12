@@ -1,5 +1,6 @@
 ﻿using LibraryManagement.Application.DTOs;
 using LibraryManagement.Application.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -16,6 +17,7 @@ namespace LibraryManagement.Presentation.Controllers
             _bookHasUserService = bookHasUserService;
         }
 
+        [Authorize(Policy = "UserPolicy")]
         [HttpPost("reserve")]
         public async Task<IActionResult> ReserveBook([FromBody] ReserveBookDto reserveBookDto)
         {
@@ -27,6 +29,7 @@ namespace LibraryManagement.Presentation.Controllers
             return Ok(result);
         }
 
+        [Authorize(Policy = "UserPolicy")]
         [HttpPost("return")]
         public async Task<IActionResult> ReturnBook([FromBody] ReturnBookDto returnBookDto)
         {
@@ -38,6 +41,7 @@ namespace LibraryManagement.Presentation.Controllers
             return Ok(result);
         }
 
+        [Authorize(Policy = "UserPolicy")]
         [HttpGet("user/{userId}")]
         public async Task<IActionResult> GetUserBooks(int userId)
         {

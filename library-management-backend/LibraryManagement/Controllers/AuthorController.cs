@@ -1,5 +1,6 @@
 ﻿using LibraryManagement.Application.DTOs;
 using LibraryManagement.Application.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -16,6 +17,7 @@ namespace LibraryManagement.Presentation.Controllers
             _authorService = authorService;
         }
 
+        [Authorize(Policy = "UserPolicy")]
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
@@ -23,6 +25,7 @@ namespace LibraryManagement.Presentation.Controllers
             return Ok(authors);
         }
 
+        [Authorize(Policy = "UserPolicy")]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
@@ -39,6 +42,7 @@ namespace LibraryManagement.Presentation.Controllers
         //    return Ok(authors);
         //}
 
+        [Authorize(Policy = "AdminPolicy")]
         [HttpPost]
         public async Task<IActionResult> Add(AuthorDto authorDto)
         {
@@ -46,6 +50,7 @@ namespace LibraryManagement.Presentation.Controllers
             return CreatedAtAction(nameof(GetAll), new { id = author.Id }, author);
         }
 
+        [Authorize(Policy = "AdminPolicy")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
